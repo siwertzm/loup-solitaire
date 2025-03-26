@@ -1,0 +1,189 @@
+{
+  "kraan": {
+    "nom": "Kraan",
+    "description": "Une créature volante",
+    "habilite": 16,
+    "endurance": 24,
+    "resistance": []
+  },
+  "vordak": {
+    "nom": "Vordak",
+    "description": "Un lieutenant des Maîtres des Ténèbres, capable d’attaques psychiques.",
+    "habilite": 17,
+    "endurance": 25,
+    "resistance": []
+  },
+  "vordak_puissant": {
+    "nom": "Puissant Vordak",
+    "description": "Un général des Maîtres des Ténèbres, capable d’attaques psychiques.",
+    "habilite": 18,
+    "endurance": 26,
+    "resistance": [
+      {
+        "id": "puissance_psychique"
+      }
+    ]
+  },
+  "ours_noir": {
+    "nom": "Ours Noir",
+    "description": "Un ours noir de formidable puissance.",
+    "habilite": 16,
+    "endurance": 10,
+    "resistance": []
+  },
+  "glok": {
+    "nom": "Glok",
+    "description": "Un guerrier gobelin.",
+    "habilite": 9,
+    "endurance": 9,
+    "resistance": []
+  },
+  "viel_homme_fou": {
+    "nom": "Vieil homme fou",
+    "description": "Un vieil homme fou qui hurle à tue tête.",
+    "habilite": 11,
+    "endurance": 10,
+    "resistance": []
+  },
+  "glok_loup_maudit": {
+    "nom": "Glok Loup Maudit",
+    "description": "Un guerrier gobelin monté sur un loup.",
+    "habilite": 15,
+    "endurance": 24,
+    "resistance": []
+  },
+  "glok_premier_112": {
+    "nom": "Glok",
+    "description": "Un guerrier gobelin.",
+    "habilite": 13,
+    "endurance": 10,
+    "resistance": []
+  },
+  "glok_deuxieme_112": {
+    "nom": "Glok",
+    "description": "Un guerrier gobelin.",
+    "habilite": 12,
+    "endurance": 10,
+    "resistance": []
+  },
+  "serpent_aile": {
+    "nom": "Serpent Ailé",
+    "description": "Un serpent ailé.",
+    "habilite": 12,
+    "endurance": 10,
+    "resistance": [
+      {
+        "id": "puissance_psychique"
+      }
+    ]
+  },
+  "monstres_des_cryptes": {
+    "nom": "Monstres des Cryptes",
+    "description": "Des monstres des cryptes.",
+    "habilite": 16,
+    "endurance": 16,
+    "resistance": []
+  },
+  "gluatre": {
+    "nom": "Gluâtre des profondeurs",
+    "description": "un Gluâtre des Profondeurs plein de tentacules visqueuses.",
+    "habilite": 17,
+    "endurance": 7,
+    "resistance": [
+      {
+        "id": "puissance_psychique"
+      },
+      {
+        "id": "communication_animale"
+      }
+    ]
+  },
+  "chef_soldats": {
+    "nom": "Chef des soldats gobelins",
+    "description": "Le chef des soldats de l'empire.",
+    "habilite": 15,
+    "endurance": 22,
+    "resistance": []
+  },
+  "soldat_premier": {
+    "nom": "Soldat",
+    "description": "Un soldat basique.",
+    "habilite": 13,
+    "endurance": 20,
+    "resistance": []
+  },
+  "soldat_deuxieme": {
+    "nom": "Soldat",
+    "description": "Un soldat basique.",
+    "habilite": 12,
+    "endurance": 20,
+    "resistance": []
+  },
+  "garde_corps": {
+    "nom": "Garde du corps",
+    "description": "Un garde du corps.",
+    "habilite": 11,
+    "endurance": 21,
+    "resistance": []
+  },
+  "gloks": {
+    "nom": "Une groupe de gloks",
+    "description": "Des guerriers gobelins.",
+    "habilite": 15,
+    "endurance": 13,
+    "resistance": []
+  },
+  "vipere":{
+    "nom": "Vipère des marais",
+    "description": "une Vipère des Marais",
+    "habilite": 16,
+    "endurance": 6,
+    "resistance": []
+  },
+  "voleur": {
+    "nom": "Voleur au poignard",
+    "description": "Un jeune assaillant agile armé d’un poignard recourbé.",
+    "habilite": 13,
+    "endurance": 20,
+    "resistance": []
+  },
+  "drakkarim": {
+    "nom": "Drakkarim",
+    "description": "Un guerrier drakkarim.",
+    "habilite": 15,
+    "endurance": 23,
+    "resistance": []
+  },
+  "loup_maudit": {
+    "nom": "Loup Maudit",
+    "description": "Un loup maudit.",
+    "habilite": 14,
+    "endurance": 23,
+    "resistance": []
+  },
+  "gourgaz": {
+    "nom": "Gourgaz",
+    "description": "Un reptile monstrueux des marais de Maakenmire",
+    "habilite": 20,
+    "endurance": 30,
+    "resistance": [
+      {
+        "id": "puissance_psychique"
+      }
+    ]
+  },
+  "glok_260": {
+    "nom": "Glok",
+    "description": "Un guerrier gobelin.",
+    "habilite": 11,
+    "endurance": 18,
+    "resistance": []
+  },
+  "glok_336": {
+    "nom": "Glok",
+    "description": "Un guerrier gobelin.",
+    "habilite": 14,
+    "endurance": 11,
+    "resistance": []
+  }
+}
