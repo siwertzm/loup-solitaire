@@ -9,6 +9,7 @@ public enum TypeCondition {
     BOURSE("bourse"),
     HASARD("hasard"),
     FUITE("fuite"),
+    ARME("arme"),
     ENDURANCE("endurance"),
     ENDURANCE_PERDUE("endurance_perdue"),
     ASSAUT_MAX("assaut_max"),

@@ -1,30 +1,36 @@
-{
-  "camouflage": {
+[
+  {
+    "id": "camouflage",
     "nom": "Camouflage",
     "description": "Cette technique permet au Seigneur Kaï de se fondre dans le paysage. A la campagne, il peut se cacher parmi les arbres et les rochers et se rendre de cette façon invisible à l'ennemi même s'il passe tout près de lui. Dans une ville, cette discipline donnera à celui qui l'utilise la faculté d'avoir l'air d'un habitant du cru, tant par l'apparence que par l'accent ou la langue employée. On peut ainsi trouver un abri où se cacher en toute sécurité.",
     "armes": null
   },
-  "chasse": {
+  {
+    "id": "chasse",
     "nom": "Chasse",
     "description": "Cette discipline donne au Seigneur Kaï l'assurance qu'il ne mourra jamais de faim même s'il se trouve dans un environnement hostile. Il aura toujours la possibilité de chasser pour se procurer de la nourriture, sauf dans les déserts et les autres régions arides. Cette technique permet également de se déplacer sans bruit en pistant une proie. Vous êtes dispensé de Repas chaque fois qu'il est obligatoire de manger.",
     "armes": null
   },
-  "sixieme_sens": {
+  {
+    "id": "sixieme_sens",
     "nom": "Sixième Sens",
     "description": "Grâce à cette technique, le Seigneur Kaï devine les dangers imminents qui le menacent. Ce Sixième Sens peut également lui révéler les intentions véritables d'un inconnu ou la nature d'un objet étrange rencontré au cours d'une aventure.",
     "armes": null
   },
-  "orientation": {
+  {
+    "id": "orientation",
     "nom": "Orientation",
     "description": "Chaque fois qu'il se trouvera dans l'obligation de décider quelle direction il doit prendre, le Seigneur Kaï fera toujours le bon choix grâce à cette technique. Il saura ainsi quel chemin il convient d'emprunter dans une forêt et il pourra également, dans une ville, découvrir l'endroit où sont cachés une personne ou un objet. Par ailleurs, il saura interpréter chaque trace de pas, chaque empreinte qui pourrait lui permettre de remonter une piste.",
     "armes": null
   },
-  "guerison": {
+  {
+    "id": "guerison",
     "nom": "Guérison",
     "description": "Cette discipline donne la faculté de récupérer des points d'ENDURANCE perdus lors d'un combat. Si vous maîtrisez cette technique, vous pourrez ajouter 1 point d'ENDURANCE à votre total à chaque fois qu'il vous sera possible d'aller d'un bout à l'autre d'un paragraphe sans avoir à combattre un ennemi.",
     "armes": null
   },
-  "maitrise_des_armes": {
+  {
+    "id": "maitrise_des_armes",
     "nom": "Maîtrise des Armes",
     "description": "En entrant au Monastère Kaï, chaque élève a la possibilité d'être initié au maniement d'une arme. Vous aurez dès lors la parfaite Maîtrise de cette arme et chaque fois que vous combattrez avec elle, vous aurez droit à 2 points d'HABILITÉ supplémentaires.",
     "armes" : [
@@ -54,24 +60,28 @@
       }
     ]
   },
-  "bouclier_psychique": {
+  {
+    "id": "bouclier_psychique",
     "nom": "Bouclier Psychique",
     "description": "Les Maîtres des Ténèbres et les nombreuses créatures malfaisantes qui leur obéissent ont la faculté de vous porter atteinte en faisant usage de leur force psychique. La technique du Bouclier psychique vous permet cependant de ne pas perdre de points d'ENDURANCE lorsque vous vous trouvez soumis à une telle agression.",
     "armes": null
   },
-  "puissance_psychique": {
+  {
+    "id": "puissance_psychique",
     "nom": "Puissance Psychique",
     "description": "Cette technique permet au Seigneur Kaï d'attaquer un ennemi en se servant de la force de son esprit : on peut l'utiliser en même temps qu'une arme de combat habituelle et l'on dispose alors de 2 points supplémentaires d'HABILITÉ. Cette puissance psychique, cependant, n'est pas forcément efficace avec toutes les créatures: il se peut que certaines d'entre elles y soient insensibles. Si le cas se présente, vous en serez averti au cours de votre mission.",
     "armes": null
   },
-  "communication_animale": {
+  {
+    "id": "communication_animale",
     "nom": "Communication Animale",
     "description": "Grâce à cette technique, un Seigneur Kaï peut communiquer avec certains animaux et deviner les intentions de certains autres.",
     "armes": null
   },
-  "maitrise_matiere": {
+  {
+    "id": "maitrise_matiere",
     "nom": "Maîtrise Psychique de la Matière",
     "description": "C'est une technique qui donne à un Seigneur Kaï la faculté de déplacer de petits objets par le simple pouvoir de sa concentration mentale.",
     "armes": null
   }
-}
+]

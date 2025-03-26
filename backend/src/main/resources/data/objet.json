@@ -1,53 +1,62 @@
-{
-  "poignard": {
+[
+  {
+    "id": "poignard",
     "nom": "Poignard",
     "description": "Un poignard pour se defendre",
     "categorie": "arme",
     "effet": null
   },
-  "lance": {
+  {
+    "id": "lance",
     "nom": "Lance",
     "description": "Une lance pour se defendre",
     "categorie": "arme",
     "effet": null
   },
-  "epee": {
+  {
+    "id": "epee",
     "nom": "Épée",
     "description": "Une épée pour se defendre",
     "categorie": "arme",
     "effet": null
   },
-  "marteau": {
+  {
+    "id": "marteau",
     "nom": "Marteau de Guerre",
     "description": "Un marteau de guerre pour se defendre",
     "categorie": "arme",
     "effet": null
   },
-  "sabre": {
+  {
+    "id": "sabre",
     "nom": "Sabre",
     "description": "Un sabre pour se defendre",
     "categorie": "arme",
     "effet": null
   },
-  "masse": {
+  {
+    "id": "masse",
     "nom": "Masse d'Armes",
     "description": "Une masse d'armes pour se defendre",
     "categorie": "arme",
     "effet": null
   },
-  "hache": {
+  {
+    "id": "hache",
     "nom": "Hache",
     "description": "Une hache pour se defendre",
     "categorie": "arme",
     "effet": null
   },
-  "baton": {
+  {
+    "id": "baton",
     "nom": "Bâton",
     "description": "Un bâton pour se defendre",
     "categorie": "arme",
     "effet": null
   },
-  "casque": {
+  {
+    "id": "casque",
     "nom": "Casque",
     "description": "Un casque pour protéger la tête",
     "categorie": "objets spéciaux",
@@ -59,7 +68,8 @@
       }
     ]
   },
-  "cotte_de_mailles": {
+  {
+    "id": "cotte_de_mailles",
     "nom": "Cotte de mailles",
     "description": "Une cotte de mailles pour protéger le torse",
     "categorie": "objets spéciaux",
@@ -67,11 +77,18 @@
       {
       "type": "endurance",
       "valeur": 2,
-      "cond": null
+      "cond": [
+        {
+          "type": "bourse",
+          "valeur": 2,
+          "targetId": "or"
+        }
+      ]
       }
     ]
   },
-  "potion_de_soin": {
+  {
+    "id": "potion_de_soin",
     "nom": "Potion de guerison",
     "description": "Restaure des points d'endurance",
     "categorie": "objet",
@@ -83,31 +100,36 @@
       }
     ]
   },
-  "pierre_de_vordak": {
+  {
+    "id": "pierre_de_vordak",
     "nom": "Pierre de Vordak",
     "description": "Une pierre de Vordak",
     "categorie": "objet",
     "effet": null
   },
-  "repas": {
+  {
+    "id": "repas",
     "nom": "Repas",
     "description": "Un repas pour se restaurer",
     "categorie": "repas",
     "effet": null
   },
-  "cle_or": {
+  {
+    "id": "cle_or",
     "nom": "Clé d'Or",
     "description": "Une clé précieuse en or, capable d'ouvrir certaines portes anciennes.",
     "categorie": "objets spéciaux",
     "effet": null
   },
-  "or": {
+  {
+    "id": "or",
     "nom": "Couronne",
     "description": "De la monnaie du Sommerlund, utilisée pour marchander.",
     "categorie": "bourse",
     "effet": null
   },
-  "laumspur": {
+  {
+    "id": "laumspur",
     "nom": "Laumspur",
     "description": "Une plante médicinale qui soigne les blessures.",
     "categorie": "objet",
@@ -119,22 +141,25 @@
       }
     ]
   },
-  "cle_argent": {
+  {
+    "id": "cle_argent",
     "nom": "Clé d'Argent",
     "description": "Une clé précieuse en argent, capable d'ouvrir certaines portes anciennes.",
     "categorie": "objets spéciaux",
     "effet": null
   },
-  "pierre_precieuse": {
+  {
+    "id": "pierre_precieuse",
     "nom": "Pierre Précieuse",
     "description": "Une pierre précieuse, utilisée pour marchander.",
     "categorie": "bourse",
     "effet": null
   },
-  "essence_alether": {
+  {
+    "id": "essence_alether",
     "nom": "Essence d'Alether",
     "description": "Une essence d'Alether, une puissante potion qui a la propriété d'accroître votre force.",
-    "categorie": "objets spéciaux",
+    "categorie": "objet",
     "effet": [
       {
       "type": "habilite",
@@ -143,40 +168,46 @@
       }
     ]
   },
-  "parchemin": {
+  {
+    "id": "parchemin",
     "nom": "Parchemin",
     "description": "Un parchemin qui contient des informations précieuses.",
     "categorie": "objets spéciaux",
     "effet": null
   },
-  "torche": {
+  {
+    "id": "torche",
     "nom": "Torche",
     "description": "Une torche pour éclairer les ténèbres.",
     "categorie": "objet",
     "effet": null
   },
-  "message": {
+  {
+    "id": "message",
     "nom": "Message",
     "description": "un message écrit sur une peau d'animal.",
     "categorie": "objet",
     "effet": null
   },
-  "savon": {
+  {
+    "id": "savon",
     "nom": "Savon",
     "description": "Un savon parfumé pour se laver",
     "categorie": "objet",
     "effet": null
   },
-  "briquet_amadou": {
+  {
+    "id": "briquet_amadou",
     "nom": "Briquet à amadou",
     "description": "Un briquet à amadou pour allumer un feu",
     "categorie": "objet",
     "effet": null
   },
-  "etoile_cristal": {
+  {
+    "id": "etoile_cristal",
     "nom": "Étoile de Cristal",
     "description": "Une Chaîne d'Or et Une petite étoile de cristal est attachée au bout.",
     "categorie": "objets spéciaux",
     "effet": null
   }
-}
+]

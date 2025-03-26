@@ -1,18 +1,47 @@
 package com.loupsolitaire.backend.model;
 
-import java.util.List;
+import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
+@Entity
+@Table(name = "chapitre")
 @Data
 public class Chapitre {
 
-    private Object chap; // numéro du chapitre
-    private String text; // texte du chapitre
-    private Boolean combat; // si le chapitre est un combat
-    private List<Objet> objet; // liste des objets du chapitre
-    private List<Effet> effet; // liste des effets du chapitre
-    private List<Ennemi> ennemi; // liste des ennemis du chapitre
-    private List<Lien> lien; // liste des liens du chapitre
+    @Id
+    private Integer id;
 
+    @Column(length = 10000)
+    private String text;
 
+    private Boolean combat;
+
+    @OneToMany(mappedBy = "chapitre", cascade = CascadeType.ALL)
+    private List<ObjetChap> objet;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+        name = "chapitre_effet",
+        joinColumns = @JoinColumn(name = "chapitre_id"),
+        inverseJoinColumns = @JoinColumn(name = "effet_id")
+    )
+    private List<Effet> effet;
+
+    @ManyToMany
+    @JoinTable(
+        name = "chapitre_ennemi",
+        joinColumns = @JoinColumn(name = "chapitre_id"),
+        inverseJoinColumns = @JoinColumn(name = "ennemi_id")
+    )
+    private List<Ennemi> ennemi;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+        name = "chapitre_lien",
+        joinColumns = @JoinColumn(name = "chapitre_id"),
+        inverseJoinColumns = @JoinColumn(name = "lien_id")
+    )
+    private List<Lien> lien;
 }

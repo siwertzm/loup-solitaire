@@ -1,67 +1,210 @@
 {
-  "condidtion": [
-    {
-      "cond": {
+  "1": {
+    "text": "Il faut vous hâter, car quelque chose vous dit qu'il serait imprudent de vous attarder parmi les ruines fumantes du monastère détruit. Les monstres volants peuvent, en effet, reparaître à tout moment. Il n'y a d'ailleurs pas de temps à perdre : vous devez au plus vite prendre la route de Holmgard, la capitale du Sommerlund, pour aller annoncer au Roi cette terrible nouvelle : les Guerriers Kaï, l'élite du pays, ont tous été massacrés, à l'exception de vous-même. Or sans l'autorité et le savoir des Seigneurs Kaï pour commander l'armée, le royaume du Sommerlund se trouve à la merci de ses plus anciens ennemis: les Maîtres des Ténèbres. En retenant vos larmes à grand-peine, vous dites adieu à vos compagnons morts et vous faites le serment de les venger. Vous tournez alors le dos aux ruines et vous descendez avec précaution le sentier escarpé qui s'ouvre devant vous. Au pied de la colline, le chemin aboutit à une bifurcation. Là, deux autres sentiers mènent l'un et l'autre à une grande forêt en empruntant deux directions différentes. Si vous souhaitez prendre le sentier de droite, rendez-vous au 85. Si vous préférez suivre celui de gauche, rendez-vous au 275. Enfin, si vous maîtrisez la Discipline Kaï du Sixième Sens, rendez-vous au 141.",
+    "combat": false,
+    "lien": [
+      {
+        "page": "85",
+        "cond": null
+      },
+      {
+        "page": "275",
+        "cond": null
+      },
+      {
+        "page": "141",
+        "cond": {
           "type": "discipline",
-          "id": "sixieme_sens", // id de la class discipline
-          "valeur": null // peux etre null un chiffre ou un chiffre negatif ou un objet
+          "id": "sixieme_sens",
+          "valeur": null
         }
-    },
-    {
-      "cond": {
+      }
+    ],
+    "id": 1,
+    "objet": [],
+    "effet": null,
+    "ennemi": null
+  },
+  "2": {
+    "text": "Tandis que vous courez à perdre haleine dans la forêt qui s'épaissit, les cris des Gloks s'évanouissent peu à peu derrière vous. Vous les avez presque semés lorsque vous trébuchez soudain en tombant tête la première dans un enchevêtrement de branches basses. Utilisez la Table de Hasard pour obtenir un chiffre. Si vous tirez entre 0 et 4, rendez-vous au 343. Entre 5 et 9, rendez-vous au 276.",
+    "combat": false,
+    "lien": [
+      {
+        "page": "343",
+        "cond": {
           "type": "hasard",
           "valeur": [0, 4],
           "id": null
         }
-    },
-    {
-      "cond": {
+      },
+      {
+        "page": "276",
+        "cond": {
+          "type": "hasard",
+          "valeur": [5, 9],
+          "id": null
+        }
+      }
+    ],
+    "id": 2,
+    "objet": [],
+    "effet": null,
+    "ennemi": null
+  },
+  "3": {
+    "text": "Vous emboîtez le pas à l'officier qui franchit une porte en arcade, puis monte quelques marches menant à un grand hall. Des soldats courent en tous sens, porteurs de parchemins ornés qu'ils doivent remettre à des officiers postés le long des murs de la ville. Un homme au visage couturé de cicatrices, l'air hagard, s'approche de vous et vous offre de le suivre jusqu'à la citadelle. Il porte la toge blanche et pourpre en usage à la cour du Roi. Si vous souhaitez suivre cet homme, rendez-vous au 196. Si vous préférez décliner son offre et retourner dans les rues populeuses, rendez-vous au 144.",
+    "combat": false,
+    "lien": [
+      {
+        "page": "196",
+        "cond": null
+      },
+      {
+        "page": "144",
+        "cond": null
+      }
+    ],
+    "id": 3,
+    "objet": [],
+    "effet": null,
+    "ennemi": null
+  },
+  "4": {
+    "text": "C'est un petit canoë à une place, en très mauvais état. Des pièces de bois disjointes laissent apparaître des trous en plusieurs endroits de la coque et il vous faut les boucher à la hâte avec de l'argile. Vous videz ensuite l'embarcation de son eau et il vous semble alors qu'elle est en état de flotter. Vous rangez votre équipement à l'avant du canoë, puis vous descendez le cours de la rivière en pagayant à l'aide d'un débris de bois ramassé à la surface de l'eau. Un instant plus tard, vous entendez des chevaux galoper dans votre direction, le long de la rive gauche. Si vous souhaitez vous cacher au fond du canoë, rendez-vous au 75. Si vous préférez au contraire attirer l'attention des cavaliers, rendez-vous au 175. Si vous maîtrisez la Discipline Kaï du Sixième Sens, rendez-vous au 218.",
+    "combat": false,
+    "lien": [
+      {
+        "page": "75",
+        "cond": null
+      },
+      {
+        "page": "175",
+        "cond": null
+      },
+      {
+        "page": "218",
+        "cond": {
+          "type": "discipline",
+          "id": "sixieme_sens",
+          "valeur": null
+        }
+      }
+    ],
+    "id": 4,
+    "objet": [],
+    "effet": null,
+    "ennemi": null
+  },
+  "5": {
+    "text": "Vous avez marché pendant environ une heure lorsque le sentier s'oriente peu à peu vers l'est. Vous atteignez bientôt un gué qui traverse un ruisseau coulant vers le sud. Le courant en est rapide et le lit, rocheux et escarpé. Au-delà du gué, le sentier que vous suivez croise un chemin plus large, orienté nord-sud. En allant vers le nord, vous vous éloigneriez de la capitale et vous décidez donc de prendre à droite, en direction du sud. Rendez-vous au 111.",
+    "combat": false,
+    "lien": [
+      {
+        "page": "111",
+        "cond": null
+      }
+    ],
+    "id": 5,
+    "objet": [],
+    "effet": null,
+    "ennemi": null
+  },
+  "6": {
+    "text": "Vous entendez au loin des chevaux dont le galop se rapproche et vous vous accroupissez derrière un arbre pour voir passer les cavaliers sans être vu. Bientôt, vous reconnaissez l'uniforme blanc de l'armée du Sommerlund : ce sont des soldats de la Garde du Roi. Si vous souhaitez les appeler, rendez-vous au 183. Si vous préférez les laisser passer et poursuivre votre chemin à travers la forêt, rendez-vous au 200.",
+    "combat": false,
+    "lien": [
+      {
+        "page": "183",
+        "cond": null
+      },
+      {
+        "page": "200",
+        "cond": null
+      }
+    ],
+    "id": 6,
+    "objet": [],
+    "effet": null,
+    "ennemi": null
+  },
+  "7": {
+    "text": "Pendant un moment qui vous semble une éternité, le flot de la foule vous entraîne comme une feuille au fil du courant. Vous essayez désespérément de rester debout, mais vos épreuves vous ont affaibli, vous avez le vertige et vos jambes sont lourdes comme du plomb. Soudain, vous apercevez un escalier de pierre, long et étroit, qui mène sur le toit d'une auberge. Rassemblant vos dernières forces, vous vous frayez un chemin jusqu'à ces marches que vous grimpez péniblement. Parvenu au sommet, vous contemplez alors une vue magnifique : les toits et les tours de Holmgard s'étendent sous vos yeux et les hauts murs de pierre de la citadelle resplendissent au soleil. Les maisons et tous les bâtiments de la capitale ont été construits très près les uns des autres et il est tout à fait possible de sauter de toit en toit. Autrefois, les habitants de Holmgard empruntaient volontiers ce « Chemin des Toits » (comme on l'appelle ici) lorsque de trop fortes pluies rendaient impraticables certaines rues non pavées. Mais les accidents ont été si nombreux qu'il est désormais interdit, par décret du Roi, de se déplacer ainsi. Dans votre cas, cependant, seul le Chemin des Toits peut vous mener jusqu'au souverain, et vous décidez donc de vous rendre au palais de cette manière. Après avoir bondi et sauté de maison en maison, vous parvenez au bout d'une rangée de toits et il ne vous reste bientôt plus qu'une seule rue à franchir pour atteindre la citadelle. Cette rue, malheureusement, est plus large que les autres et il vous faudra réussir un bond spectaculaire si vous voulez passer de l'autre côté. La gorge un peu serrée, le sang battant à vos tempes, vous prenez donc votre élan en courant sur toute la longueur du toit, puis vous vous élancez, le regard fixé sur la maison d'en face. Utilisez la Table de Hasard pour obtenir un chiffre. Si vous tirez un chiffre entre 0 et 2, rendez-vous au 108. Entre 3 et 9, rendez-vous au 25.",
+    "combat": false,
+    "lien": [
+      {
+        "page": "108",
+        "cond": {
+          "type": "hasard",
+          "valeur": [0, 2],
+          "id": null
+        }
+      },
+      {
+        "page": "25",
+        "cond": {
+          "type": "hasard",
+          "valeur": [3, 9],
+          "id": null
+        }
+      }
+    ],
+    "id": 7,
+    "objet": [],
+    "effet": null,
+    "ennemi": null
+  },
+  "8": {
+    "text": "Votre Sixième Sens vous avertit qu'une terrible bataille fait rage dans le sud. Mais votre simple bon sens vous rappelle également que le chemin le plus court pour rejoindre la capitale passe précisément par le sud. Rendez-vous au 70 pour établir votre itinéraire.",
+    "combat": false,
+    "lien": [
+      {
+        "page": "70",
+        "cond": null
+      }
+    ],
+    "id": 8,
+    "objet": [],
+    "effet": null,
+    "ennemi": null
+  },
+  "9": {
+    "text": "Vous ne pouvez plus bouger : une force mystérieuse vous immobilise et vos yeux sont attirés par la bouche du squelette. Montant des profondeurs de la terre, vous entendez alors un bourdonnement grave, comme si des millions d'abeilles en fureur étaient rassemblées là. Puis une lueur rougeâtre s'allume dans les orbites vides du roi mort et le bourdonnement augmente d'intensité jusqu'à devenir assourdissant. Vous êtes en présence d'une force maléfique plus ancienne et plus puissante encore que celle des Maîtres des Ténèbres. Si vous possédez une Pierre de Vordak, rendez-vous au 236. Sinon, rendez-vous au 292.",
+    "combat": false,
+    "lien": [
+      {
+        "page": "236",
+        "cond": {
           "type": "objet",
-          "id": "pierre_de_vordak", // id de la class objet
+          "id": "pierre_de_vordak",
           "valeur": 1
         }
-    },
-    {
-      "cond": {
-          "type": "bourse",
-          "valeur": 10,
-          "id": "or"   // id de la class objet
-        }
-    },
-    {
-      "cond": {
-          "type": "fuite",
-          "valeur": 3,
-          "id": null
-        }
-    },
-    {
-      "cond": {
-          "type": "endurance",
-          "valeur": 10,
-          "id": null
-          }
-    },
-    {
-      "cond": {
-          "type": "endurance_perdue",
-          "valeur": 1,
-          "id": null
-        }
-    },
-    {
-      "cond": {
-          "type": "assaut_max",
-          "valeur": 4,
-          "id": null
-        }
-    },
-    {
-      "cond": {
-          "type": "assaut_echec",
-          "valeur": 4,
-          "id": null
-        }
-    }
-  ]
+      },
+      {
+        "page": "292",
+        "cond": null
+      }
+    ],
+    "id": 9,
+    "objet": [],
+    "effet": null,
+    "ennemi": null
+  },
+  "10": {
+    "text": "Vous êtes en sueur et vos jambes vous font mal. Un peu plus loin, vous apercevez quelques maisonnettes rassemblées. Si vous souhaitez entrer dans l'une de ces maisonnettes pour y prendre quelque repos, rendez-vous au 115. Si vous préférez poursuivre votre chemin, rendez-vous au 83.",
+    "combat": false,
+    "lien": [
+      {
+        "page": "115",
+        "cond": null
+      },
+      {
+        "page": "83",
+        "cond": null
+      }
+    ],
+    "id": 10,
+    "objet": [],
+    "effet": null,
+    "ennemi": null
+  }
 }
