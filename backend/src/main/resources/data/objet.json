@@ -51,31 +51,37 @@
     "nom": "Casque",
     "description": "Un casque pour protéger la tête",
     "categorie": "objets spéciaux",
-    "effet": {
-      "type": "endurance",
-      "valeur": 2,
-      "cond": null
-    }
+    "effet": [
+      {
+        "type": "endurance",
+        "valeur": 2,
+        "cond": null
+      }
+    ]
   },
   "cotte_de_mailles": {
     "nom": "Cotte de mailles",
     "description": "Une cotte de mailles pour protéger le torse",
     "categorie": "objets spéciaux",
-    "effet": {
+    "effet": [
+      {
       "type": "endurance",
       "valeur": 2,
       "cond": null
-    }
+      }
+    ]
   },
   "potion_de_soin": {
     "nom": "Potion de guerison",
     "description": "Restaure des points d'endurance",
     "categorie": "objet",
-    "effet": {
+    "effet": [
+      {
       "type": "endurance",
       "valeur": 4,
       "cond": null
-    }
+      }
+    ]
   },
   "pierre_de_vordak": {
     "nom": "Pierre de Vordak",
@@ -105,11 +111,13 @@
     "nom": "Laumspur",
     "description": "Une plante médicinale qui soigne les blessures.",
     "categorie": "objet",
-    "effet": {
+    "effet": [
+      {
       "type": "endurance",
       "valeur": 3,
       "cond": null
-    }
+      }
+    ]
   },
   "cle_argent": {
     "nom": "Clé d'Argent",
@@ -127,11 +135,13 @@
     "nom": "Essence d'Alether",
     "description": "Une essence d'Alether, une puissante potion qui a la propriété d'accroître votre force.",
     "categorie": "objets spéciaux",
-    "effet": {
+    "effet": [
+      {
       "type": "habilite",
       "valeur": 2,
       "cond": null
-    }
+      }
+    ]
   },
   "parchemin": {
     "nom": "Parchemin",

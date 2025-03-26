@@ -1,0 +1,67 @@
+{
+  "condidtion": [
+    {
+      "cond": {
+          "type": "discipline",
+          "id": "sixieme_sens", // id de la class discipline
+          "valeur": null // peux etre null un chiffre ou un chiffre negatif ou un objet
+        }
+    },
+    {
+      "cond": {
+          "type": "hasard",
+          "valeur": [0, 4],
+          "id": null
+        }
+    },
+    {
+      "cond": {
+          "type": "objet",
+          "id": "pierre_de_vordak", // id de la class objet
+          "valeur": 1
+        }
+    },
+    {
+      "cond": {
+          "type": "bourse",
+          "valeur": 10,
+          "id": "or"   // id de la class objet
+        }
+    },
+    {
+      "cond": {
+          "type": "fuite",
+          "valeur": 3,
+          "id": null
+        }
+    },
+    {
+      "cond": {
+          "type": "endurance",
+          "valeur": 10,
+          "id": null
+          }
+    },
+    {
+      "cond": {
+          "type": "endurance_perdue",
+          "valeur": 1,
+          "id": null
+        }
+    },
+    {
+      "cond": {
+          "type": "assaut_max",
+          "valeur": 4,
+          "id": null
+        }
+    },
+    {
+      "cond": {
+          "type": "assaut_echec",
+          "valeur": 4,
+          "id": null
+        }
+    }
+  ]
+}
