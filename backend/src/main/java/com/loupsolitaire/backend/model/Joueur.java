@@ -21,6 +21,14 @@ public class Joueur {
 
   @ManyToMany
   @JoinTable(
+      name = "joueur_discipline_maitrise",
+      joinColumns = @JoinColumn(name = "joueur_id"),
+      inverseJoinColumns = @JoinColumn(name = "objet_id")
+  )
+  private List<Objet> armeMaitrise = new ArrayList<>();
+
+  @ManyToMany
+  @JoinTable(
       name = "joueur_discipline",
       joinColumns = @JoinColumn(name = "joueur_id"),
       inverseJoinColumns = @JoinColumn(name = "discipline_id")

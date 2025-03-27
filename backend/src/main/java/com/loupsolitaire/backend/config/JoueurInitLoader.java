@@ -35,6 +35,9 @@ public class JoueurInitLoader implements CommandLineRunner {
     Discipline discipline = disciplineRepository.findById("maitrise_des_armes")
         .orElseThrow(() -> new RuntimeException("Discipline non trouvée"));
 
+    Objet armeMaitrise = objetRepository.findById("epee")
+        .orElseThrow(() -> new RuntimeException("Objet non trouvé"));
+
 
     Joueur joueur = new Joueur();
         joueur.setNom("Loup Solitaire");
@@ -44,6 +47,7 @@ public class JoueurInitLoader implements CommandLineRunner {
         joueur.setArmes(List.of(arme));
         joueur.setRepas(List.of(repas));
         joueur.setDisciplines(List.of(discipline));
+        joueur.setArmeMaitrise(List.of(armeMaitrise));
 
         joueurRepository.save(joueur);
         System.out.println("✅ Joueur initial créé avec succès");

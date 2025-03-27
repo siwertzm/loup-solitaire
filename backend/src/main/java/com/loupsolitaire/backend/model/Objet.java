@@ -3,8 +3,6 @@ package com.loupsolitaire.backend.model;
 import jakarta.persistence.*;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import lombok.Data;
 
 @Entity
@@ -18,10 +16,6 @@ public class Objet {
   private String nom;
   private String description;
   private String categorie;
-
-  @ManyToMany(mappedBy = "armes")
-  @JsonIgnore
-  private List<Discipline> disciplines;
 
 
   @ManyToMany(cascade = CascadeType.ALL)

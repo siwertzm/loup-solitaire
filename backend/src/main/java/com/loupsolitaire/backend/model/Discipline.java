@@ -23,13 +23,4 @@ public class Discipline {
   @ManyToMany(mappedBy = "resistance")
   @JsonIgnore
   private List<Ennemi> ennemis;
-
-  @ManyToMany
-  @JoinTable(
-    name = "discipline_arme",
-    joinColumns = @JoinColumn(name = "discipline_id"),
-    inverseJoinColumns = @JoinColumn(name = "objet_id")
-  )
-  private List<Objet> armes; // armes associées à la discipline
-
 }
