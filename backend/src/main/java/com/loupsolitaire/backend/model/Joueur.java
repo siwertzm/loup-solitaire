@@ -75,4 +75,7 @@ public class Joueur {
   )
   private List<Objet> objetSpeciaux = new ArrayList<>();
 
+  @ManyToOne
+  @JoinColumn(name = "utilisateur_id")
+  private Utilisateur utilisateur;
 }
