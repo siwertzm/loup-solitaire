@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Profil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h2>Bienvenue, {{ user?.username }}</h2>
+  <p>Je fais un test</p>
+
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Vos personnages</ion-label>
+    </ion-list-header>
+
+    <ion-item *ngFor="let joueur of joueurs">
+      <ion-label>
+        <h3>{{ joueur.nom }}</h3>
+        <p>Endurance : {{ joueur.endurance }} / {{ joueur.enduranceMax }}</p>
+        <p>Habilité : {{ joueur.habilite }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-item>
+    <ion-label position="floating">Nom du personnage</ion-label>
+    <ion-input [(ngModel)]="nouveauNom"></ion-input>
+  </ion-item>
+
+  <ion-button expand="block" (click)="creerNouveauJoueur()">Créer</ion-button>
+
+</ion-content>

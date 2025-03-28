@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.ArrayList;
 
 @Entity
@@ -17,6 +20,7 @@ public class Joueur {
   private String nom;
   private Integer habilite;
   private Integer endurance;
+  private Integer enduranceMax;
   private Integer chapActuel;
 
   @ManyToMany
@@ -77,5 +81,6 @@ public class Joueur {
 
   @ManyToOne
   @JoinColumn(name = "utilisateur_id")
+  @JsonIgnore
   private Utilisateur utilisateur;
 }

@@ -20,12 +20,17 @@ export class LoginPage {
 
   constructor(private AuthService: AuthService, private router: Router, private storageService: StorageService) {}
 
+  ngOnInit() {
+   this.storageService.clearToken();
+  }
+
   login() {
     this.AuthService.login({ username: this.username, password: this.password }).subscribe({
       next: (res) => {
         console.log('✅ Token reçu :', res.token);
-        this.storageService.saveToken(res.token); // on sauvegarde le token dans le localStorage
-        this.router.navigateByUrl('/home'); // on redirige vers la page principale du jeu
+        this.storageService.saveToken(res.token);
+        localStorage.setItem('token', res.token);
+        this.router.navigateByUrl('/profil');
       },
       error: (err) => {
         console.error('❌ Erreur de connexion :', err);
