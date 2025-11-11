@@ -10,6 +10,9 @@ import com.loupsolitaire.backend.model.Discipline;
 import com.loupsolitaire.backend.model.Joueur;
 import com.loupsolitaire.backend.model.Objet;
 import com.loupsolitaire.backend.repository.ObjetRepository;
+
+import jakarta.transaction.Transactional;
+
 import com.loupsolitaire.backend.repository.JoueurRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -158,6 +161,7 @@ public class JoueurService {
     // ENDURANCE
     // ============================================================
 
+    @Transactional
     public Joueur modifierEndurance(Joueur joueur, int montant) {
         int limiteMax = joueur.getEnduranceMax();
         int nouvelleEndurance = joueur.getEndurance() + montant;
@@ -175,6 +179,7 @@ public class JoueurService {
     // consomation objet
     // ============================================================
 
+    @Transactional
     public Joueur consomerObjet(Joueur joueur, Objet objet) {
         if (joueur == null || objet == null) {
             throw new IllegalArgumentException("❌ Joueur ou objet invalide");
