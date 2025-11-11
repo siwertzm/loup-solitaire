@@ -11,7 +11,7 @@ import com.loupsolitaire.backend.model.Joueur;
 import com.loupsolitaire.backend.model.Objet;
 import com.loupsolitaire.backend.repository.ObjetRepository;
 
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.loupsolitaire.backend.repository.JoueurRepository;
 
@@ -119,6 +119,7 @@ public class JoueurService {
         return joueur.getDisciplines().size() < 5;
     }
 
+    @Transactional
     public Joueur ajouterDiscipline(Joueur joueur, Discipline discipline) {
         if (!peutAjouterDiscipline(joueur)) {
             throw new RuntimeException("❌ Le joueur ne peut pas avoir plus de 5 disciplines.");

@@ -7,7 +7,7 @@ import com.loupsolitaire.backend.model.Objet;
 import com.loupsolitaire.backend.model.TypeEffet;
 import com.loupsolitaire.backend.repository.JoueurRepository;
 
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -131,7 +131,6 @@ public class ObjetService {
     // Ajout et retrait d'objets spéciaux
     // ============================================================
 
-    @Transactional
     private Joueur ajouterObjetSpeciaux(Joueur joueur, Objet objet) {
 
         if (joueur == null || objet == null) {
@@ -162,7 +161,6 @@ public class ObjetService {
         return joueur;
     }
 
-    @Transactional
     private Joueur retirerObjetSpeciaux(Joueur joueur, Objet objet) {
         // Vérifie que le joueur possède bien cet objet
         if (!hasObjet(joueur, objet)) {
@@ -197,7 +195,6 @@ public class ObjetService {
     // Ajout et retrait d'armes
     // ============================================================
 
-    @Transactional
     private Joueur ajouterArme(Joueur joueur, Objet arme) {
 
         // Vérifie le nombre maximum d’armes
@@ -211,7 +208,6 @@ public class ObjetService {
         return joueurRepository.save(joueur);
     }
 
-    @Transactional
     private Joueur retirerArme(Joueur joueur, Objet arme) {
 
         // Vérifie que le joueur possède bien cet objet
@@ -249,7 +245,6 @@ public class ObjetService {
     // Ajout de piece d'or
     // ============================================================
 
-    @Transactional
     public Joueur ajouterOr(Joueur joueur, Objet piece, int quantite) {
         if (joueur == null || piece == null) {
             throw new IllegalArgumentException("❌ Joueur ou objet invalide");

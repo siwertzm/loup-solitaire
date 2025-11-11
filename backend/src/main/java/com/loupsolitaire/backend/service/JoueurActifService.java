@@ -5,6 +5,9 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import org.springframework.stereotype.Service;
 
+import org.springframework.transaction.annotation.Transactional;
+
+
 @Service
 public class JoueurActifService {
     // Associe chaque utilisateur (username) à l'id de son joueur actif
@@ -16,6 +19,7 @@ public class JoueurActifService {
     }
 
     // Récupérer le joueur actif
+    @Transactional(readOnly = true)
     public Long getJoueurActif(String username) {
         return joueursActifs.get(username);
     }
