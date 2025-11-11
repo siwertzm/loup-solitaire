@@ -6,6 +6,7 @@ import java.util.Random;
 
 import org.springframework.stereotype.Service;
 
+import com.loupsolitaire.backend.model.CategorieObjet;
 import com.loupsolitaire.backend.model.Discipline;
 import com.loupsolitaire.backend.model.Joueur;
 import com.loupsolitaire.backend.model.Objet;
@@ -40,29 +41,27 @@ public class JoueurService {
         joueur.setEndurance(initEndurance());
         joueur.setEnduranceMax(joueur.getEndurance());
         joueur.setChapActuel(0);
+    }
 
+    public void caisseInitiale(Joueur joueur) {
+        //ajout arme
+        Objet hache = objetRepository.findById("hache")
+            .orElseThrow(() -> new RuntimeException("Objet non trouvé"));
+        objetService.ajouterObjet(joueur, hache, 1);
+        //ajout repas
+        Objet repas = objetRepository.findById("repas")
+            .orElseThrow(() -> new RuntimeException("Objet non trouvé"));
+        objetService.ajouterObjet(joueur, repas, 1);
         //or aléatoire
         int orInitial = initOr();
         System.out.println("💰 Or initial : " + orInitial);
         Objet objetOr = objetRepository.findById("or")
             .orElseThrow(() -> new RuntimeException("Objet non trouvé"));
         objetService.ajouterObjet(joueur, objetOr, orInitial);
-
         //ajout objet spécial
         Objet carte = objetRepository.findById("carte")
             .orElseThrow(() -> new RuntimeException("Objet non trouvé"));
         objetService.ajouterObjet(joueur, carte, 1);
-
-        //ajout repas
-        Objet repas = objetRepository.findById("repas")
-            .orElseThrow(() -> new RuntimeException("Objet non trouvé"));
-        objetService.ajouterObjet(joueur, repas, 1);
-
-        //ajout arme
-        Objet hache = objetRepository.findById("hache")
-            .orElseThrow(() -> new RuntimeException("Objet non trouvé"));
-        objetService.ajouterObjet(joueur, hache, 1);
-
         //ajout objet aléatoire
         Objet objetAleatoire = getObjetAleatoire();
         ajouterObjetAleatoire(joueur, objetAleatoire);
@@ -100,16 +99,18 @@ public class JoueurService {
     }
 
     private void ajouterObjetAleatoire(Joueur joueur, Objet objetAleatoire) {
-        System.out.println("🎁 Objet aléatoire attribué : " + objetAleatoire.getNom() + " (Catégorie : " + objetAleatoire.getCategorie() + ")");
-        if ("repas".equalsIgnoreCase(objetAleatoire.getCategorie())) {
-            // Exemple : un joueur reçoit deux repas identiques au début
-            objetService.ajouterObjet(joueur, objetAleatoire, 2);
-        } else if ("bourse".equalsIgnoreCase(objetAleatoire.getCategorie())) {
-           objetService.ajouterObjet(joueur, objetAleatoire,12);
-        } else {
-            objetService.ajouterObjet(joueur, objetAleatoire, 1);
+        System.out.printf("🎁 Objet aléatoire attribué : %s (Catégorie : %s)%n",
+            objetAleatoire.getNom(), objetAleatoire.getCategorie());
+
+        switch (objetAleatoire.getCategorie()) {
+            case REPAS -> {
+                objetService.ajouterObjet(joueur, objetAleatoire, 1);
+                objetService.ajouterObjet(joueur, objetAleatoire, 1);
+            }
+            case BOURSE -> objetService.ajouterObjet(joueur, objetAleatoire, 12);
+            default -> objetService.ajouterObjet(joueur, objetAleatoire, 1);
         }
-    }
+}
 
     // ============================================================
     // DISCIPLINES
@@ -134,7 +135,7 @@ public class JoueurService {
         // Cas particulier : maîtrise d'armes
         if (discipline.getNom().equalsIgnoreCase("Maîtrise des Armes")) {
             List<Objet> armesDisponibles = objetRepository.findAll().stream()
-                    .filter(obj -> obj.getCategorie().equalsIgnoreCase("ARME"))
+                    .filter(obj -> obj.getCategorie() == CategorieObjet.ARME)
                     .toList();
 
             if (!armesDisponibles.isEmpty()) {
@@ -190,7 +191,7 @@ public class JoueurService {
             throw new IllegalArgumentException("⚠️ Le joueur ne possède pas cet objet : " + objet.getNom());
         }
 
-        if (!"objet".equalsIgnoreCase(objet.getCategorie())) {
+        if (objet.getCategorie() != CategorieObjet.OBJET) {
             throw new IllegalArgumentException("⚠️ L'objet '" + objet.getNom() + "' n'est pas consommable.");
         }
 
@@ -211,7 +212,7 @@ public class JoueurService {
             default -> System.out.println("⚠️ Type d'effet non géré : " + effet.getType());
         }});
 
-        objetService.retirerObjet(joueur, objet);
+        objetService.retirerObjet(joueur, objet, 1);
         
         return joueurRepository.save(joueur);
     }

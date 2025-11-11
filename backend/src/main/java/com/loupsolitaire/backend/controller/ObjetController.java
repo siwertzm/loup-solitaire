@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-import org.springframework.web.bind.annotation.PostMapping;
+
 
 
 @RestController
@@ -67,6 +67,23 @@ public class ObjetController {
     return ResponseEntity.ok(message);
   }
 
+  @PostMapping("/coffre")
+  public ResponseEntity<String> coffreBienvenu(@AuthenticationPrincipal UserDetails userDetails) {
+    // Récupérer le joueur actif
+    Long joueurId = joueurActifService.getJoueurActif(userDetails.getUsername());
+    if (joueurId == null) {
+      throw new RuntimeException("Aucun joueur actif trouvé pour l'utilisateur");
+    }
+
+    Joueur joueur = joueurRepository.findById(joueurId)
+        .orElseThrow(() -> new RuntimeException("Joueur actif non trouvé"));
+
+    joueurService.caisseInitiale(joueur);
+
+    return ResponseEntity.ok("Coffre de bienvenue créé pour " + joueur.getNom());
+  }
+  
+
   //retirer un objet a l'utilisateur actif
   @PostMapping("/retirer/{id}")
   public ResponseEntity<String> retirerObjet(@PathVariable String id, @AuthenticationPrincipal UserDetails userDetails) {
@@ -84,7 +101,7 @@ public class ObjetController {
         .orElseThrow(() -> new RuntimeException("Joueur actif non trouvé"));
 
     // retirer l'objet au joueur
-    objetService.retirerObjet(joueur, objet);
+    objetService.retirerObjet(joueur, objet, 1);
 
     String message = String.format("✅ %s retiré de %s.", objet.getNom(), joueur.getNom());
 

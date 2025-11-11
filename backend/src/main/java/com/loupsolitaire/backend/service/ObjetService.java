@@ -1,7 +1,12 @@
 package com.loupsolitaire.backend.service;
 
+import java.util.Collection;
+import java.util.Objects;
+import java.util.stream.Stream;
+
 import org.springframework.stereotype.Service;
 
+import com.loupsolitaire.backend.model.CategorieObjet;
 import com.loupsolitaire.backend.model.Joueur;
 import com.loupsolitaire.backend.model.Objet;
 import com.loupsolitaire.backend.model.TypeEffet;
@@ -22,35 +27,18 @@ public class ObjetService {
     // ============================================================
 
     public boolean hasObjet(Joueur joueur, Objet objet) {
-        if (joueur == null || objet == null) return false;
+    if (joueur == null || objet == null) return false;
 
-        // Vérifie les objets spéciaux
-        boolean dansObjetsSpeciaux = joueur.getObjetSpeciaux() != null &&
-            joueur.getObjetSpeciaux().stream()
-                .anyMatch(o -> o.getId().equalsIgnoreCase(objet.getId()));
-
-        // Vérifie les armes
-        boolean dansArmes = joueur.getArmes() != null &&
-            joueur.getArmes().stream()
-                .anyMatch(o -> o.getId().equalsIgnoreCase(objet.getId()));
-
-        // Vérifie les objets normaux
-        boolean dansObjets = joueur.getObjets() != null &&
-            joueur.getObjets().stream()
-                .anyMatch(o -> o.getId().equalsIgnoreCase(objet.getId()));
-
-        // Vérifie les repas
-        boolean dansRepas = joueur.getRepas() != null &&
-            joueur.getRepas().stream()
-                .anyMatch(o -> o.getId().equalsIgnoreCase(objet.getId()));
-
-        // Vérifie les bourses (pièces d’or)
-        boolean dansBourses = joueur.getBourses() != null &&
-            joueur.getBourses().stream()
-                .anyMatch(o -> o.getId().equalsIgnoreCase(objet.getId()));
-
-        // Si trouvé dans l'une des catégories, renvoyer true
-        return dansObjetsSpeciaux || dansArmes || dansObjets || dansRepas || dansBourses;
+        return Stream.of(
+        joueur.getObjetSpeciaux(),
+        joueur.getArmes(),
+        joueur.getObjets(),
+        joueur.getRepas(),
+        joueur.getBourses()
+        )
+        .filter(Objects::nonNull)
+        .flatMap(Collection::stream)
+        .anyMatch(o -> o.getId().equalsIgnoreCase(objet.getId()));
     }
 
     // ============================================================
@@ -59,36 +47,40 @@ public class ObjetService {
 
     @Transactional
     public Joueur ajouterObjet(Joueur joueur, Objet objet, int quantite) {
-       if (joueur == null || objet == null) {
-           throw new IllegalArgumentException("Joueur ou objet invalide");
-       }
+        if (joueur == null || objet == null) {
+            throw new IllegalArgumentException("❌ Joueur ou objet invalide");
+        }
 
-       String categorie = objet.getCategorie() != null ? objet.getCategorie().toLowerCase() : "";
+        CategorieObjet categorie = objet.getCategorie();
+        if (categorie == null) {
+            System.out.println("⚠️ Objet sans catégorie : " + objet.getNom());
+            return joueur;
+        }
 
         switch (categorie) {
-            case "objets spéciaux" -> {
+            case OBJETS_SPECIAUX -> {
                 return ajouterObjetSpeciaux(joueur, objet);
             }
-            case "arme" -> {
+            case ARME -> {
                 return ajouterArme(joueur, objet);
             }
-            case "objet", "repas" -> {
+            case OBJET, REPAS -> {
                 if (!hasPlace(joueur)) {
                     throw new RuntimeException("🎒 Votre sac à dos est plein (8 objets ou repas maximum)");
                 }
 
-                if (categorie.equals("objet")) {
+                if (categorie == CategorieObjet.OBJET) {
                     joueur.getObjets().add(objet);
                 } else {
                     joueur.getRepas().add(objet);
                 }
             }
-            case "bourse" -> {
+            case BOURSE -> {
                 return ajouterOr(joueur, objet, quantite);
             }
             default -> {
-                System.out.println("⚠️ Catégorie inconnue : " + objet.getCategorie());
-                return joueur; // ne rien faire, mais éviter un save inutile
+                System.out.println("⚠️ Catégorie inconnue : " + categorie);
+                return joueur;
             }
         }
 
@@ -96,7 +88,7 @@ public class ObjetService {
     }
 
     @Transactional
-    public Joueur retirerObjet(Joueur joueur, Objet objet) {
+    public Joueur retirerObjet(Joueur joueur, Objet objet, int quantite) {
         if (joueur == null || objet == null) {
            throw new IllegalArgumentException("Joueur ou objet invalide");
         }
@@ -105,25 +97,36 @@ public class ObjetService {
             throw new IllegalArgumentException("⚠️ Le joueur ne possède pas cet objet : " + objet.getNom());
         }
 
-        String categorie = objet.getCategorie() != null ? objet.getCategorie().toLowerCase() : "";
+        CategorieObjet categorie = objet.getCategorie();
+        if (categorie == null) {
+            System.out.println("⚠️ Objet sans catégorie : " + objet.getNom());
+            return joueur;
+        }
 
         switch (categorie) {
-        case "objets spéciaux":
-            return retirerObjetSpeciaux(joueur, objet);
-        case "arme":
-            return retirerArme(joueur, objet);
-        case "objet":
-            joueur.getObjets().remove(objet);
-            break;
-        case "repas":
-            joueur.getRepas().remove(objet);
-            break;
-        case "bourse":
-            joueur.getBourses().remove(objet);
-            break;
-        default:
-            System.out.println("⚠️ Catégorie inconnue : " + objet.getCategorie());
-         }
+            case OBJETS_SPECIAUX -> {
+                return retirerObjetSpeciaux(joueur, objet);
+            }   
+
+            case ARME -> {
+                return retirerArme(joueur, objet);
+            }
+
+            case OBJET, REPAS -> {
+                if (categorie == CategorieObjet.OBJET) {
+                    joueur.getObjets().remove(objet);
+                } else {
+                    joueur.getRepas().remove(objet);
+                }
+            }
+            case BOURSE -> {
+                return retirerOr(joueur, objet, quantite);
+            }
+            default -> {
+                System.out.println("⚠️ Catégorie inconnue : " + categorie);
+                return joueur;
+            }
+        }
         return joueurRepository.save(joueur);
     }
 
@@ -271,8 +274,31 @@ public class ObjetService {
         return joueurRepository.save(joueur);
     }
 
+    public Joueur retirerOr(Joueur joueur, Objet piece, int quantite) {
+        if (joueur == null || piece == null) {
+            throw new IllegalArgumentException("❌ Joueur ou objet invalide");
+        }
+
+        if (quantite <= 0) {
+            throw new IllegalArgumentException("⚠️ La quantité d’or à retirer doit être positive.");
+        }
+
+        int totalActuel = joueur.getBourses() != null ? joueur.getBourses().size() : 0;
+
+        if (totalActuel == 0) {
+            throw new RuntimeException("⚠️ Le joueur ne possède pas de pièces d’or à retirer.");
+        }
+
+        // Retire une pièce d’or
+        for (int i = 0; i < quantite && i < totalActuel; i++) {
+            joueur.getBourses().remove(piece);
+        }
+
+        return joueurRepository.save(joueur);
+    }
+
     // ============================================================
-    // Ajout de piece d'or
+    // place limite sac a dos
     // ============================================================
 
     private boolean hasPlace(Joueur joueur) {

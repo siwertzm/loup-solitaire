@@ -1,5 +1,6 @@
 package com.loupsolitaire.backend.controller;
 import com.loupsolitaire.backend.model.Discipline;
+import com.loupsolitaire.backend.model.IdDiscipline;
 import com.loupsolitaire.backend.model.Joueur;
 import com.loupsolitaire.backend.model.Utilisateur;
 import com.loupsolitaire.backend.repository.JoueurRepository;
@@ -17,8 +18,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 
 
@@ -117,11 +116,17 @@ public class JoueurController {
     }
     Joueur joueur = joueurRepository.findById(joueurId)
         .orElseThrow(() -> new RuntimeException("Joueur actif non trouvé"));
-    Discipline discipline = disciplineRepository.findById(disciplineId)
-            .orElseThrow(() -> new RuntimeException("Discipline non trouvée"));
+    
+    // recuper la discipline
+    IdDiscipline idEnum = IdDiscipline.fromString(disciplineId);
+    if (idEnum == null) {
+      throw new RuntimeException("⚠️ Discipline inconnue : " + disciplineId);
+    }
+
+    Discipline discipline = disciplineRepository.findById(idEnum)
+        .orElseThrow(() -> new RuntimeException("Discipline non trouvée : " + idEnum));
 
     joueurService.ajouterDiscipline(joueur, discipline);
-    joueurService.modifierEndurance(joueur, -6);
   
 
     return joueurRepository.save(joueur);

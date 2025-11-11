@@ -13,7 +13,8 @@ import lombok.Data;
 public class Discipline {
 
   @Id
-  private String id; // identifiant de la discipline
+  @Enumerated(EnumType.STRING)
+  private IdDiscipline id; // identifiant de la discipline
 
   private String nom; // nom de la discipline
 
