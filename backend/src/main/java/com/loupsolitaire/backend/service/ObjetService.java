@@ -230,8 +230,12 @@ public class ObjetService {
             .count() * 2;
         }
 
+        if (joueur.getArmes() == null || joueur.getArmes().isEmpty()) {
+            bonus = -4;
+        }
+
         joueur.setHabilite(base + bonus);
-        joueur.setBonusMaitrise(bonus > 0);
+        joueur.setBonusMaitrise(bonus != 0);
     }
 
     // ============================================================
