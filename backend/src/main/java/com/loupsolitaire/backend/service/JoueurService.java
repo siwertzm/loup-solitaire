@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.loupsolitaire.backend.model.Discipline;
@@ -21,9 +20,7 @@ public class JoueurService {
 
     private final ObjetRepository objetRepository;
     private final JoueurRepository joueurRepository;
-
-    @Autowired
-    private ObjetService objetService;
+    private final ObjetService objetService;
 
 
     private final Random random = new Random();

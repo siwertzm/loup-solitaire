@@ -9,7 +9,6 @@ import com.loupsolitaire.backend.request.RegisterRequest;
 import com.loupsolitaire.backend.response.AuthResponse;
 import lombok.RequiredArgsConstructor;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -25,9 +24,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class AuthController {
 
-    @Autowired
-    private JoueurRepository joueurRepository;
-
+    private final JoueurRepository joueurRepository;
     private final UtilisateurRepository utilisateurRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtUtil jwtUtil;

@@ -10,7 +10,6 @@ import com.loupsolitaire.backend.service.ObjetService;
 
 import lombok.RequiredArgsConstructor;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -26,17 +25,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 @RequiredArgsConstructor
 public class ObjetController {
 
-  @Autowired
-  private JoueurService joueurService;
-
-  @Autowired
-  private JoueurActifService joueurActifService;
-
-  @Autowired
-  private ObjetService objetService;
-
   private final ObjetRepository objetRepository;
   private final JoueurRepository joueurRepository;
+  private final ObjetService objetService;
+  private final JoueurActifService joueurActifService;
+  private final JoueurService joueurService;
 
   // Récupérer tous les objets
   @GetMapping

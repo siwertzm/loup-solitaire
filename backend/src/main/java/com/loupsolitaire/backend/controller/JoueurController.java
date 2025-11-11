@@ -10,7 +10,6 @@ import com.loupsolitaire.backend.service.JoueurService;
 
 import lombok.RequiredArgsConstructor;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -28,12 +27,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RequiredArgsConstructor
 public class JoueurController {
 
-  @Autowired
-  private JoueurActifService joueurActifService;
-
-  @Autowired
-  private JoueurService joueurService;
-
+  private final JoueurActifService joueurActifService;
+  private final JoueurService joueurService;
   private final JoueurRepository joueurRepository;
   private final UtilisateurRepository utilisateurRepository;
   private final DisciplineRepository disciplineRepository;
