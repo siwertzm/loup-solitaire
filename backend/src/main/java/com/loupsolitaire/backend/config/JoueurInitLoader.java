@@ -43,6 +43,7 @@ public class JoueurInitLoader implements CommandLineRunner {
         joueur.setNom("Loup Solitaire");
         joueur.setHabilite(15);
         joueur.setEndurance(20);
+        joueur.setEnduranceMax(20);
         joueur.setChapActuel(0);
         joueur.setArmes(List.of(arme));
         joueur.setRepas(List.of(repas));
