@@ -1,6 +1,7 @@
 package com.loupsolitaire.backend.service;
 
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 import org.springframework.stereotype.Service;
 
@@ -203,7 +204,7 @@ public class ChapitreService {
 
     // Jeu de hasard
     public void jeuHasard (Joueur joueur) {
-        int tirage = (int) (Math.random() * 10);
+        int tirage = (int) (ThreadLocalRandom.current().nextDouble() * 10);
         joueur.setDernierHasard(tirage);
         joueurRepository.save(joueur);
         System.out.println("🎲 Nouveau jet de hasard : " + tirage);
