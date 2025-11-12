@@ -78,6 +78,9 @@ public class ObjetController {
     Joueur joueur = joueurRepository.findById(joueurId)
         .orElseThrow(() -> new RuntimeException("Joueur actif non trouvé"));
 
+    if (joueur.isKdo()) {
+        return ResponseEntity.badRequest().body("🎉 Coffre de bienvenue déjà attribué au joueur.");
+    }
     joueurService.caisseInitiale(joueur);
 
     return ResponseEntity.ok("Coffre de bienvenue créé pour " + joueur.getNom());

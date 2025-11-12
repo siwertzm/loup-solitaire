@@ -40,7 +40,7 @@ public class JoueurService {
         joueur.setEnduranceTemporaire(0);
         joueur.setEndurance(initEndurance());
         joueur.setEnduranceMax(joueur.getEndurance());
-        joueur.setChapActuel(0);
+        joueur.setChapActuel(78);
     }
 
     public void caisseInitiale(Joueur joueur) {
@@ -53,7 +53,7 @@ public class JoueurService {
             .orElseThrow(() -> new RuntimeException("Objet non trouvé"));
         objetService.ajouterObjet(joueur, repas, 1);
         //or aléatoire
-        int orInitial = initOr();
+        int orInitial = 10;
         System.out.println("💰 Or initial : " + orInitial);
         Objet objetOr = objetRepository.findById("or")
             .orElseThrow(() -> new RuntimeException("Objet non trouvé"));
@@ -65,6 +65,9 @@ public class JoueurService {
         //ajout objet aléatoire
         Objet objetAleatoire = getObjetAleatoire();
         ajouterObjetAleatoire(joueur, objetAleatoire);
+
+        joueur.setKdo(true);
+        joueurRepository.save(joueur);
     }
 
     // ============================================================

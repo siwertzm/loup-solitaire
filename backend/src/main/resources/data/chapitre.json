@@ -48,7 +48,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[0, 4]",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -56,7 +56,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[5, 9]",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -150,7 +150,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[0, 2]",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -158,7 +158,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[3, 9]",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -190,7 +190,7 @@
         "cond": [{
           "type": "objet",
           "targetId": "pierre_de_vordak",
-          "valeur": 1
+          "valeur": "1"
         }]
       },
       {
@@ -356,7 +356,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[0, 0]",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -364,7 +364,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[1, 2]",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -372,7 +372,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[3, 9]",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -467,7 +467,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[5, 9]",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -475,7 +475,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[0, 4]",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -493,7 +493,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[8, 9]",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -501,7 +501,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[0, 7]",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -519,7 +519,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[9, 9]",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -527,7 +527,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[0, 8]",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -545,7 +545,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[0, 4]",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -553,7 +553,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[5, 9]",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -827,7 +827,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[0, 4]",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -837,7 +837,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[0, 4]",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -845,7 +845,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[5, 9]",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -989,7 +989,7 @@
         "cond": [{
           "type": "fuite",
           "valeur": "3",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -1007,7 +1007,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[0, 4]",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -1015,7 +1015,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[5, 9]",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -1109,7 +1109,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[0, 4]",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -1117,7 +1117,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[5, 9]",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -1566,11 +1566,7 @@
       { "page": "132", "cond": null },
       {
         "page": "12",
-        "cond": [{
-          "type": "bourse",
-          "valeur": "1",
-          "targetId": "or"
-        }]
+        "cond": []
       },
       { "page": "220", "cond": null }
     ],
@@ -1724,7 +1720,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[0, 1]",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -1732,7 +1728,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[2, 4]",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -1740,7 +1736,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[5, 9]",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -2141,7 +2137,7 @@
         "cond": [{
           "type": "fuite",
           "valeur": "0",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -2848,7 +2844,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[6, 9]",
-          "id": null
+          "targetId": null
         }]
 
       }
@@ -2885,7 +2881,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[0, 4]",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -2893,7 +2889,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[5, 9]",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -3047,7 +3043,7 @@
         "cond": [{
           "type": "fuite",
           "valeur": "1",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -3245,7 +3241,7 @@
         "cond": [{
           "type": "fuite",
           "valeur": "1",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -3353,7 +3349,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[0, 6]",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -3362,7 +3358,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[7, 9]",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -3409,7 +3405,7 @@
         "cond": [{
           "type": "fuite",
           "valeur": "1",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -3573,7 +3569,7 @@
         "cond": [{
           "type": "endurance",
           "valeur": "10",
-          "id": null
+          "targetId": null
           }]
       },
       {
@@ -3606,8 +3602,8 @@
     "text": "Leur chef ramasse votre Équipement et vous fait signe d'avancer le long du chemin. Les deux autres ont alors un sourire mauvais et vous vous rendez soudain compte qu'il ne s'agit pas du tout de soldats : ce sont des brigands déguisés. Vous prenez aussitôt la fuite en courant à toutes jambes vers la capitale. Mais au même instant, un frisson vous parcourt l'échiné : vous venez en effet d'entendre derrière vous le déclic d'une arbalète que l'on arme. Utilisez la Table de Hasard pour obtenir un chiffre : si vous tirez un chiffre entre 0 et 4, rendez-vous au 181. Entre 5 et 9, rendez- vous au 145.",
     "combat": false,
     "lien": [
-      { "page": "181", "cond": [{ "type": "hasard", "valeur": "[0, 4]", "id": null }] },
-      { "page": "145", "cond": [{ "type": "hasard", "valeur": "[5, 9]", "id": null }] }
+      { "page": "181", "cond": [{ "type": "hasard", "valeur": "[0, 4]", "targetId": null }] },
+      { "page": "145", "cond": [{ "type": "hasard", "valeur": "[5, 9]", "targetId": null }] }
     ],
     "id": 205,
     "objet": [],
@@ -3814,7 +3810,7 @@
     "effet": null,
     "lien": [
       { "page": "24", "cond": null },
-      { "page": "234", "cond": [{ "type": "fuite", "valeur": "0", "id": null }] }
+      { "page": "234", "cond": [{ "type": "fuite", "valeur": "0", "targetId": null }] }
     ],
     "id": 220,
     "objet": []
@@ -3890,7 +3886,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[0, 4]",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -3898,7 +3894,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[5, 9]",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -3922,7 +3918,7 @@
         "cond": [{
           "type": "endurance_perdue",
           "valeur": "1",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -3930,7 +3926,7 @@
         "cond": [{
           "type": "endurance_perdue",
           "valeur": "0",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -3996,7 +3992,7 @@
         "cond": [{
           "type": "assaut_max",
           "valeur": "4",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -4004,7 +4000,7 @@
         "cond": [{
           "type": "assaut_echec",
           "valeur": "4",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -4012,7 +4008,7 @@
         "cond": [{
           "type": "fuite",
           "valeur": "2",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -4128,7 +4124,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[0, 4]",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -4136,7 +4132,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[5, 9]",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -4755,7 +4751,7 @@
         "cond": [{
           "type": "arme",
           "valeur": "1",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -4780,7 +4776,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[0, 4]",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -4788,7 +4784,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[5, 9]",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -4825,7 +4821,7 @@
         "cond": [{
           "type": "arme",
           "valeur": "1",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -4864,7 +4860,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[0, 6]",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -4872,7 +4868,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[7, 9]",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -4939,7 +4935,7 @@
         "cond": [{
           "type": "assaut_max",
           "valeur": "1",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -5149,7 +5145,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[0, 2]",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -5157,7 +5153,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[3, 6]",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -5165,7 +5161,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[7, 9]",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -5299,7 +5295,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[0, 2]",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -5307,7 +5303,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[3, 9]",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -5417,7 +5413,7 @@
         "cond": [{
           "type": "arme",
           "valeur": "1",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -5558,7 +5554,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[0, 6]",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -5566,7 +5562,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[7, 9]",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -5979,7 +5975,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[0, 4]",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -5987,7 +5983,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[5, 9]",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -6023,7 +6019,7 @@
         "cond": [{
           "type": "assaut_max",
           "valeur": "4",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -6031,7 +6027,7 @@
         "cond": [{
           "type": "assaut_echec",
           "valeur": "4",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -6039,7 +6035,7 @@
         "cond": [{
           "type": "fuite",
           "valeur": "0",
-          "id": null
+          "targetId": null
         }]
       }
     ],

@@ -24,6 +24,8 @@ public class Joueur {
   private Integer enduranceMax;
   private Integer chapActuel;
   private Long utilisateurId;
+  private Integer dernierHasard;
+  private boolean kdo = false;
 
   @ManyToMany
   @JoinTable(
