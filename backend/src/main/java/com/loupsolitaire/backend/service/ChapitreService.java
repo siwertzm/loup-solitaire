@@ -25,46 +25,32 @@ public class ChapitreService {
     private final ObjetRepository objetRepository;
     private final ObjetService objetServices;
 
-    public List<Integer> getLienChapActuel(Joueur joueur) {
-        // Récupérer le chapitre actuel du joueur
-        int chapActuel = joueur.getChapActuel();
-        
-        // Récupérer le chapitre depuis le repository
-        Chapitre chapitre = chapitreRepository.findById(chapActuel)
-            .orElseThrow(() -> new RuntimeException("Chapitre non trouvé : " + chapActuel));
-        
-        // 3️⃣ Retourne la liste des IDs de chapitres accessibles
-        return chapitre.getLien().stream()
-            .map(lien -> {
-                if (validationLien(lien, joueur)) {
-                    return Integer.parseInt(lien.getPage());
-                } else {
-                    return null;
-                }
-            })
-            .toList();
-    }
+
+    //=================================================================================
+    // Passage au chapitre suivant
+    //=================================================================================
 
     public void chapSuivant(Joueur joueur, int idChapitre, int chapitreActuel) {
 
-        // 🛑 Si on clique sur le même chapitre, rien à faire
+        //même chapitre, rien faire
         if (idChapitre == chapitreActuel) return;
 
         Chapitre chapitreActuelle = chapitreRepository.findById(chapitreActuel)
                 .orElseThrow(() -> new RuntimeException("Chapitre non trouvé : " + chapitreActuel));
 
-        // 🔎 On cherche le lien correspondant au chapitre demandé
+        //lien correspondant au chapitre demandé
         Lien lienChoisi = chapitreActuelle.getLien().stream()
             .filter(lien -> Integer.parseInt(lien.getPage()) == idChapitre)
             .findFirst()
             .orElseThrow(() -> new RuntimeException("Lien vers chapitre " + idChapitre + " introuvable"));
 
+        // Vérifier si le lien est accessible
         boolean accessible = validationLien(lienChoisi, joueur);
         if (!accessible) {
             throw new RuntimeException("Chapitre " + idChapitre + " inaccessible depuis le chapitre " + chapitreActuel);
         }
 
-        // 💰 Appliquer les effets des conditions (ex : retirer de l’or)
+        // Effets des conditions
         if (lienChoisi.getCond() != null) {
             lienChoisi.getCond().forEach(cond -> {
                 if (cond.getType() == TypeCondition.BOURSE) {
@@ -74,16 +60,23 @@ public class ChapitreService {
                 }
             });
         }
+        // Passage au chapitre suivant
         jeuHasard(joueur);
         joueur.setChapActuel(idChapitre);
         joueurRepository.save(joueur);
     }
+
+    //=================================================================================
+    // Validation des conditions d'un lien
+    //=================================================================================
 
     private boolean validationLien(Lien lien, Joueur joueur) {
         // Si aucune condition => accessible
         if (lien.getCond() == null || lien.getCond().isEmpty()) {
             return true;
         }
+
+        // Vérifier si le lien est accessible
         return lien.getCond().stream().allMatch(cond -> {
             TypeCondition type = cond.getType() != null ? cond.getType() : null;
             if (type == null) {
@@ -114,6 +107,10 @@ public class ChapitreService {
             }
         });
     }
+
+    //=================================================================================
+    // Methodes de validation des conditions
+    //=================================================================================
 
     private boolean valideBourse(String valeur, Joueur joueur, String target) {
         // Implémenter la logique de validation de la bourse ici
@@ -212,4 +209,32 @@ public class ChapitreService {
         System.out.println("🎲 Nouveau jet de hasard : " + tirage);
     }
 
+    //check lien
+    public List<Integer> getLienChapActuel(Joueur joueur) {
+        // Récupérer le chapitre actuel du joueur
+        int chapActuel = joueur.getChapActuel();
+        
+        // Récupérer le chapitre depuis le repository
+        Chapitre chapitre = chapitreRepository.findById(chapActuel)
+            .orElseThrow(() -> new RuntimeException("Chapitre non trouvé : " + chapActuel));
+        
+        // 3️⃣ Retourne la liste des IDs de chapitres accessibles
+        return chapitre.getLien().stream()
+            .map(lien -> {
+                if (validationLien(lien, joueur)) {
+                    return Integer.parseInt(lien.getPage());
+                } else {
+                    return null;
+                }
+            })
+            .toList();
+    }
+
+    //=================================================================================
+    // Méthodes Objets
+    //=================================================================================
+
+    public void ajouterObjet(Joueur joueur, Chapitre chapitre) {
+        System.out.println(chapitre.getObjet());
+    }
 }
