@@ -1322,7 +1322,7 @@
     "id": 62,
     "objet": [
       { "id": "or", "valeur": 28, "optionnel": false },
-      { "id": "repas", "valeur": 3, "optionnel": true },
+      { "id": "repas", "valeur": 3, "optionnel": false },
       { "id": "epee", "valeur": 1, "optionnel": true }
     ]
   },
@@ -5765,13 +5765,7 @@
   {
     "text": "Vous introduisez avec précaution la Clé d'Or dans la serrure et vous la tournez dans le sens des aiguilles d'une montre. Vous entendez alors un faible déclic : le mécanisme a fonctionné. Vous retirez ensuite la broche et la lourde porte de granité pivote bientôt sur ses gonds, s'ouvrant vers vous. La lumière grise du cimetière se diffuse dans le caveau et vous parvenez à sortir. L'ouverture est, cependant, envahie de ronces et vous vous écorchez le visage et les mains en vous hissant au-dehors. Lorsque, enfin, vous vous retrouvez à l'air libre, la porte du caveau se referme lentement derrière vous et un rire cruel, inhumain, semble aussitôt s'élever des profondeurs de la terre, juste sous vos pieds. Saisi de terreur, vous prenez vos jambes à votre cou et vous vous précipitez vers la porte sud de la ville, en traversant aussi vite que possible cette sinistre nécropole. Rendez-vous au 61.",
     "combat": false,
-    "objet": [
-      {
-        "id": "cle_or",
-        "valeur": -1,
-        "optionnel": false
-      }
-    ],
+    "objet": [],
     "effet": null,
     "ennemi": null,
     "lien": [

@@ -57,7 +57,8 @@ public class ChapitreService {
                 if (cond.getType() == TypeCondition.BOURSE) {
                     Objet or = objetRepository.findById("or")
                         .orElseThrow(() -> new RuntimeException("Objet or introuvable"));
-                    objetServices.retirerObjet(joueur, or, Integer.parseInt(cond.getValeur()));
+                    int qte = Math.abs(Integer.parseInt(cond.getValeur()));
+                    objetServices.retirerObjet(joueur, or, qte);
                 }
             });
         }
@@ -235,7 +236,19 @@ public class ChapitreService {
     // Méthodes Objets
     //=================================================================================
 
-    public void ajouterObjet(Joueur joueur, Chapitre chapitre) {
-        System.out.println(chapitre.getObjet());
+    public void objetChapitre(Joueur joueur, Chapitre chapitre) {
+        if (chapitre.getObjet() == null || chapitre.getObjet().isEmpty()) {
+            return;
+        }
+        chapitre.getObjet().forEach(objetChap -> {
+            if (!objetChap.isOptionnel()) {
+                int quantite = Math.abs(objetChap.getValeur());
+                if (objetChap.getValeur() < 0) {
+                    objetServices.retirerObjet(joueur, objetChap.getObjet(), quantite);
+                } else {
+                    objetServices.ajouterObjet(joueur, objetChap.getObjet(), quantite);
+                }
+            }
+        });
     }
 }

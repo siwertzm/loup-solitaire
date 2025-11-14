@@ -58,26 +58,22 @@ public class ObjetService {
         }
 
         switch (categorie) {
-            case OBJETS_SPECIAUX -> {
-                return ajouterObjetSpeciaux(joueur, objet);
-            }
-            case ARME -> {
-                return ajouterArme(joueur, objet);
-            }
+            case OBJETS_SPECIAUX -> ajouterObjetSpeciaux(joueur, objet, quantite);
+            case ARME -> ajouterArme(joueur, objet, quantite);
             case OBJET, REPAS -> {
                 if (!hasPlace(joueur)) {
                     throw new RuntimeException("🎒 Votre sac à dos est plein (8 objets ou repas maximum)");
                 }
 
-                if (categorie == CategorieObjet.OBJET) {
-                    joueur.getObjets().add(objet);
-                } else {
-                    joueur.getRepas().add(objet);
+                for (int i = 0; i < quantite; i++) {
+                    if (categorie == CategorieObjet.OBJET) {
+                        joueur.getObjets().add(objet);
+                    } else {
+                        joueur.getRepas().add(objet);
+                    }
                 }
             }
-            case BOURSE -> {
-                return ajouterOr(joueur, objet, quantite);
-            }
+            case BOURSE -> ajouterOr(joueur, objet, quantite);
             default -> {
                 System.out.println("⚠️ Catégorie inconnue : " + categorie);
                 return joueur;
@@ -92,36 +88,38 @@ public class ObjetService {
         if (joueur == null || objet == null) {
            throw new IllegalArgumentException("Joueur ou objet invalide");
         }
+        if (quantite <= 0) {
+            throw new IllegalArgumentException("⚠️ La quantité doit être positive.");
+        }
 
-        if (!hasObjet(joueur, objet)) {
-            throw new IllegalArgumentException("⚠️ Le joueur ne possède pas cet objet : " + objet.getNom());
+        if (objet.getCategorie() != CategorieObjet.REPAS) {
+            if (!hasObjet(joueur, objet)) {
+                throw new IllegalArgumentException("⚠️ Le joueur ne possède pas cet objet : " + objet.getNom());
+            }
         }
 
         CategorieObjet categorie = objet.getCategorie();
-        if (categorie == null) {
-            System.out.println("⚠️ Objet sans catégorie : " + objet.getNom());
-            return joueur;
-        }
 
         switch (categorie) {
-            case OBJETS_SPECIAUX -> {
-                return retirerObjetSpeciaux(joueur, objet);
-            }   
-
-            case ARME -> {
-                return retirerArme(joueur, objet);
+            case OBJETS_SPECIAUX -> retirerObjetSpeciaux(joueur, objet, quantite);
+            case ARME -> retirerArme(joueur, objet, quantite);
+            case OBJET -> {
+                for (int i = 0; i < quantite; i++) {
+                        joueur.getObjets().remove(objet);
+                    }
             }
-
-            case OBJET, REPAS -> {
-                if (categorie == CategorieObjet.OBJET) {
-                    joueur.getObjets().remove(objet);
+            case REPAS -> {
+                boolean aUnRepas = joueur.getRepas().contains(objet);
+                System.out.println("Le joueur possède-t-il le repas ? " + aUnRepas);
+                if (aUnRepas) {
+                    for (int i = 0; i < quantite; i++) {
+                        joueur.getRepas().remove(objet);
+                    }
                 } else {
-                    joueur.getRepas().remove(objet);
-                }
+                    joueur.setEndurance(joueur.getEndurance() - 3);
+                }  
             }
-            case BOURSE -> {
-                return retirerOr(joueur, objet, quantite);
-            }
+            case BOURSE -> retirerOr(joueur, objet, quantite);
             default -> {
                 System.out.println("⚠️ Catégorie inconnue : " + categorie);
                 return joueur;
@@ -134,7 +132,7 @@ public class ObjetService {
     // Ajout et retrait d'objets spéciaux
     // ============================================================
 
-    private Joueur ajouterObjetSpeciaux(Joueur joueur, Objet objet) {
+    private void ajouterObjetSpeciaux(Joueur joueur, Objet objet, int quantite) {
 
         if (joueur == null || objet == null) {
             throw new IllegalArgumentException("❌ Joueur ou objet invalide");
@@ -144,13 +142,14 @@ public class ObjetService {
         if (isObjetUnique(objet)) {
             boolean dejaPossede = joueur.getObjetSpeciaux().stream()
                 .anyMatch(o -> o.getId().equalsIgnoreCase(objet.getId()));
-
             if (dejaPossede) {
                 throw new RuntimeException("⚠️ Le joueur possède déjà l'objet spécial unique : " + objet.getNom());
             }
         }
 
-        joueur.getObjetSpeciaux().add(objet);
+        for (int i = 0; i < quantite; i++) {
+            joueur.getObjetSpeciaux().add(objet);
+        }
 
         if (objet.getEffet() != null && !objet.getEffet().isEmpty()) {
             objet.getEffet().stream()
@@ -159,18 +158,18 @@ public class ObjetService {
                     joueur.setEndurance(joueur.getEndurance() + e.getValeur());
                     joueur.setEnduranceMax(joueur.getEnduranceMax() + e.getValeur());
                 });
-        } 
-        joueurRepository.save(joueur);
-        return joueur;
+        }
     }
 
-    private Joueur retirerObjetSpeciaux(Joueur joueur, Objet objet) {
+    private void retirerObjetSpeciaux(Joueur joueur, Objet objet, int quantite) {
         // Vérifie que le joueur possède bien cet objet
         if (!hasObjet(joueur, objet)) {
             throw new RuntimeException("⚠️ Le joueur ne possède pas cet objet spécial : " + objet.getNom());
         }
 
-        joueur.getObjetSpeciaux().remove(objet);
+        for (int i = 0; i < quantite; i++) {
+            joueur.getObjetSpeciaux().remove(objet);
+        }
 
         if (objet.getEffet() != null && !objet.getEffet().isEmpty()) {
             objet.getEffet().stream()
@@ -180,9 +179,7 @@ public class ObjetService {
                     joueur.setEndurance(Math.max(0, nouvelleEndu));
                     joueur.setEnduranceMax(joueur.getEnduranceMax() - e.getValeur());
                 });
-        } 
-        joueurRepository.save(joueur);
-        return joueur;
+        }
     }
 
     private boolean isObjetUnique(Objet objet) {
@@ -198,46 +195,47 @@ public class ObjetService {
     // Ajout et retrait d'armes
     // ============================================================
 
-    private Joueur ajouterArme(Joueur joueur, Objet arme) {
+    private void ajouterArme(Joueur joueur, Objet arme, int quantite) {
 
         // Vérifie le nombre maximum d’armes
-        if (joueur.getArmes().size() >= 2) {
+        int tailleActuelle = joueur.getArmes().size();
+        if (tailleActuelle + quantite > 2) {
             throw new RuntimeException("⚠️ Le joueur a déjà le maximum d’armes (2).");
         }
 
-        joueur.getArmes().add(arme);
+        for (int i = 0; i < quantite; i++) {
+            joueur.getArmes().add(arme);
+        }
         bonusMaitrise(joueur);
-
-        return joueurRepository.save(joueur);
     }
 
-    private Joueur retirerArme(Joueur joueur, Objet arme) {
+    private void retirerArme(Joueur joueur, Objet arme, int quantite) {
 
         // Vérifie que le joueur possède bien cet objet
         if (!hasObjet(joueur, arme)) {
             throw new RuntimeException("⚠️ Le joueur ne possède pas cette arme : " + arme.getNom());
         }
 
-        joueur.getArmes().remove(arme);
+        for (int i = 0; i < quantite; i++) {
+            joueur.getArmes().remove(arme);
+        }
         bonusMaitrise(joueur);
-
-        return joueurRepository.save(joueur);
     }
 
     public void bonusMaitrise(Joueur joueur) {
         int base = joueur.getHabiliteBase();
         int bonus = 0;
 
-        if (joueur.getArmes() != null && joueur.getArmeMaitrise() != null) {
-        // +2 pour chaque arme équipée que le joueur maîtrise
-        bonus = (int) joueur.getArmes().stream()
-            .filter(arme -> joueur.getArmeMaitrise().stream()
-                .anyMatch(maitrise -> maitrise.getId().equalsIgnoreCase(arme.getId())))
-            .count() * 2;
-        }
-
         if (joueur.getArmes() == null || joueur.getArmes().isEmpty()) {
             bonus = -4;
+        } 
+        else {
+            // +2 par arme maîtrisée équipée
+            long armesMaitrisees = joueur.getArmes().stream()
+                .filter(arme -> joueur.getArmeMaitrise().stream()
+                    .anyMatch(maitrise -> maitrise.getId().equalsIgnoreCase(arme.getId())))
+                .count();
+            bonus = (int) armesMaitrisees * 2;
         }
 
         joueur.setHabilite(base + bonus);
@@ -248,53 +246,30 @@ public class ObjetService {
     // Ajout de piece d'or
     // ============================================================
 
-    public Joueur ajouterOr(Joueur joueur, Objet piece, int quantite) {
-        if (joueur == null || piece == null) {
-            throw new IllegalArgumentException("❌ Joueur ou objet invalide");
+    private void ajouterOr(Joueur joueur, Objet piece, int quantite) {
+
+        int total = joueur.getBourses().size();
+        int capacity = 50 - total;
+
+        if (capacity <= 0) {
+            throw new RuntimeException("💰 Votre bourse est déjà pleine (50 pièces maximum).");
         }
 
-        if (quantite <= 0) {
-            throw new IllegalArgumentException("⚠️ La quantité d’or à ajouter doit être positive.");
-        }
+        int toAdd = Math.min(quantite, capacity);
 
-        int totalActuel = joueur.getBourses() != null ? joueur.getBourses().size() : 0;
-        int capaciteRestante = 50 - totalActuel;
-
-        if (capaciteRestante <= 0) {
-            throw new RuntimeException("💰 Votre bourse est déjà pleine (50 pièces max).");
-        }
-
-        // Limite le nombre ajouté pour ne pas dépasser 50
-        int aAjouter = Math.min(quantite, capaciteRestante);
-
-        for (int i = 0; i < aAjouter; i++) {
+        for (int i = 0; i < toAdd; i++) {
             joueur.getBourses().add(piece);
         }
-
-        return joueurRepository.save(joueur);
     }
 
-    public Joueur retirerOr(Joueur joueur, Objet piece, int quantite) {
-        if (joueur == null || piece == null) {
-            throw new IllegalArgumentException("❌ Joueur ou objet invalide");
+    public void retirerOr(Joueur joueur, Objet piece, int quantite) {
+        if (!hasObjet(joueur, piece)) {
+            throw new IllegalArgumentException("⚠️ Le joueur ne possède pas de " + piece.getNom());
         }
-
-        if (quantite <= 0) {
-            throw new IllegalArgumentException("⚠️ La quantité d’or à retirer doit être positive.");
-        }
-
-        int totalActuel = joueur.getBourses() != null ? joueur.getBourses().size() : 0;
-
-        if (totalActuel == 0) {
-            throw new RuntimeException("⚠️ Le joueur ne possède pas de pièces d’or à retirer.");
-        }
-
         // Retire une pièce d’or
-        for (int i = 0; i < quantite && i < totalActuel; i++) {
+        for (int i = 0; i < quantite; i++) {
             joueur.getBourses().remove(piece);
         }
-
-        return joueurRepository.save(joueur);
     }
 
     // ============================================================

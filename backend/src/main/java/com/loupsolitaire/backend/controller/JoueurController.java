@@ -18,6 +18,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 
 
@@ -32,6 +35,42 @@ public class JoueurController {
   private final UtilisateurRepository utilisateurRepository;
   private final DisciplineRepository disciplineRepository;
 
+  //===========================================================
+  // commande admin
+  //===========================================================
+
+  @PostMapping("/chap/{id}")
+  public Joueur initChap(@AuthenticationPrincipal UserDetails userDetails, @PathVariable Integer id) {
+    // recuper le joueur actif
+    Long joueurId = joueurActifService.getJoueurActif(userDetails.getUsername());
+    if (joueurId == null) {
+      throw new RuntimeException("Aucun joueur actif défini pour cet utilisateur");
+    }
+    Joueur joueur = joueurRepository.findById(joueurId)
+        .orElseThrow(() -> new RuntimeException("Joueur actif non trouvé"));
+
+    joueur.setChapActuel(id);
+    joueurRepository.save(joueur);
+      
+    return joueur;
+  }
+  
+  @PostMapping("/endu/{id}")
+  public Joueur initEndu(@AuthenticationPrincipal UserDetails userDetails, @PathVariable Integer id) {
+    // recuper le joueur actif
+    Long joueurId = joueurActifService.getJoueurActif(userDetails.getUsername());
+    if (joueurId == null) {
+      throw new RuntimeException("Aucun joueur actif défini pour cet utilisateur");
+    }
+    Joueur joueur = joueurRepository.findById(joueurId)
+        .orElseThrow(() -> new RuntimeException("Joueur actif non trouvé"));
+
+    joueur.setEndurance(id);
+    joueurRepository.save(joueur);
+      
+    return joueur;
+  }
+  //===========================================================
 
   // Récupérer tous les joueurs
   @GetMapping
