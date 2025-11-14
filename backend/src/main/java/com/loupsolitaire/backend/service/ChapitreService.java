@@ -11,7 +11,6 @@ import com.loupsolitaire.backend.model.Objet;
 import com.loupsolitaire.backend.model.TypeCondition;
 import com.loupsolitaire.backend.model.TypeEffet;
 import com.loupsolitaire.backend.model.Chapitre;
-import com.loupsolitaire.backend.model.Cond;
 import com.loupsolitaire.backend.model.IdDiscipline;
 import com.loupsolitaire.backend.repository.ChapitreRepository;
 import com.loupsolitaire.backend.repository.JoueurRepository;
