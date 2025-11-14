@@ -9,7 +9,9 @@ import com.loupsolitaire.backend.model.Joueur;
 import com.loupsolitaire.backend.model.Lien;
 import com.loupsolitaire.backend.model.Objet;
 import com.loupsolitaire.backend.model.TypeCondition;
+import com.loupsolitaire.backend.model.TypeEffet;
 import com.loupsolitaire.backend.model.Chapitre;
+import com.loupsolitaire.backend.model.Cond;
 import com.loupsolitaire.backend.model.IdDiscipline;
 import com.loupsolitaire.backend.repository.ChapitreRepository;
 import com.loupsolitaire.backend.repository.JoueurRepository;
@@ -25,6 +27,7 @@ public class ChapitreService {
     private final JoueurRepository joueurRepository;
     private final ObjetRepository objetRepository;
     private final ObjetService objetServices;
+    private final EffetService effetService;
 
 
     //=================================================================================
@@ -248,6 +251,25 @@ public class ChapitreService {
                 } else {
                     objetServices.ajouterObjet(joueur, objetChap.getObjet(), quantite);
                 }
+            }
+        });
+    }
+
+    //=================================================================================
+    // Méthodes Effets
+    //=================================================================================
+
+    public void effetChapitre(Joueur joueur, Chapitre chapitre) {
+        if (chapitre.getEffet() == null || chapitre.getEffet().isEmpty()) {
+            return;
+        }
+        chapitre.getEffet().forEach(effet -> {
+            TypeEffet type = effet.getType();
+            switch (type) {
+                case ENDURANCE -> effetService.appliquerEffetEndurance(joueur, effet);
+                case HABILETE  -> effetService.appliquerEffetHabilete(joueur, effet);
+                case VOL       -> effetService.appliquerEffetVol(joueur, effet);
+                default -> System.err.println("⚠️ Type d'effet inconnu : " + effet.getType());
             }
         });
     }

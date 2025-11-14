@@ -177,7 +177,6 @@ public class JoueurService {
         }
         joueur.setEndurance(nouvelleEndurance);
         return joueurRepository.save(joueur);
-        
     }
 
     // ============================================================

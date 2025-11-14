@@ -51,7 +51,9 @@ public class ChapitreController {
     
     if (id != chapitreActuel) {
         chapitreService.objetChapitre(joueur, chapitreRepository.findById(id)
-        .orElseThrow(() -> new RuntimeException("Chapitre non trouvé : " + id)));
+          .orElseThrow(() -> new RuntimeException("Chapitre non trouvé : " + id)));
+        chapitreService.effetChapitre(joueur, chapitreRepository.findById(id)
+          .orElseThrow(() -> new RuntimeException("Chapitre non trouvé : " + id)));
     }
     return chapitreRepository.findById(id);
   }

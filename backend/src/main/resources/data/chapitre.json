@@ -691,7 +691,7 @@
         "cond": [{
           "type": "discipline",
           "targetId": "bouclier_psychique",
-          "valeur": "-1"
+          "valeur": null
         }]
       }
     ],
@@ -789,7 +789,7 @@
           "cond": [{
             "type": "discipline",
             "targetId": "bouclier_psychique",
-            "valeur": "-1"
+            "valeur": null
           }]
         }
       ],
@@ -2917,7 +2917,7 @@
     "text": "Vous vous approchez de ces hommes et vous les appelez. Mais lorsqu'ils se tournent vers vous, votre sang se glace et vous sentez votre cœur battre à tout rompre, car ce sont des Drakkarims déguisés. En vous voyant, ils se précipitent sur vous, vous ligotent pieds et poignets et vous traînent derrière eux le long d'un sentier. Ils vous prennent votre Sac à Dos et vos Armes, mais ils ne fouillent pas les poches de votre cape et ne trouvent pas vos Pièces d'Or. Vous les entendez jacasser d'un air menaçant tandis qu'ils vous emportent ainsi vers leur repaire : de toute évidence, ils sont en train de décider du sort qu'ils vous réservent, et vos perspectives d'avenir ne semblent pas des plus réjouissantes. Si vous possédez la Discipline Kaï de la Maîtrise Psychique de la Matière, rendez-vous au 258. Sinon, rendez-vous au 127.",
     "combat": false,
     "ennemi": null,
-    "effet": [],
+    "effet": null,
     "lien": [
       {
         "page": "258",
@@ -3069,7 +3069,7 @@
         "cond": [{
           "type": "objet",
           "targetId": "torche",
-          "valeur": "1"
+          "valeur": null
         }]
       }
     ],
@@ -4100,7 +4100,8 @@
       {
         "type": "habilite",
         "valeur": -1,
-        "cond": null
+        "cond": null,
+        "permanent": true
       }
     ],
     "ennemi": null,
@@ -6090,7 +6091,7 @@
         "cond": [{
           "type": "discipline",
           "targetId": "bouclier_psychique",
-          "valeur": "-1"
+          "valeur": null
         }]
       }
     ],
