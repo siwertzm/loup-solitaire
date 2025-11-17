@@ -1,0 +1,7 @@
+{
+  "name": "loup-solitaire",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
