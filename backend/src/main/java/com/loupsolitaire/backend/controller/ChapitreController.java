@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Optional;
 
 
+@CrossOrigin(origins = "http://localhost:8100")
 @RestController
 @RequestMapping("/api/chapitres")
 @RequiredArgsConstructor
@@ -31,6 +32,12 @@ public class ChapitreController {
   @GetMapping
   public List<Chapitre> getAll() {
     return chapitreRepository.findAll();
+  }
+
+  @GetMapping("/chap/{id}")
+  public Chapitre getChapitreById(@PathVariable Integer id) {
+    return chapitreRepository.findById(id)
+      .orElseThrow(() -> new RuntimeException("Chapitre non trouvé : " + id));
   }
 
   // Récupérer un chapitre par son id

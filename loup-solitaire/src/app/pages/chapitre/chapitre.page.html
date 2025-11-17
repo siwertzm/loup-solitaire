@@ -1,0 +1,134 @@
+<ion-content fullscreen class="page">
+
+  <!-- BARRES DE STATS -->
+  <div class="header">
+    <div class="stats">
+      <div class="bar endurance">
+        <span>Endurance</span>
+        <div class="value" [style.width.%]="(endurance/enduranceMax)*100"></div>
+      </div>
+
+      <div class="bar habilete">
+        <span>Habilité</span>
+        <div class="value" style="width: 100%"></div>
+      </div>
+    </div>
+    <div>
+      <img class="avatar" src="assets/illustrations/perso.png" alt="avatar" />
+    </div>
+  </div>
+
+  <!-- CARTE CHAPITRE -->
+  <div class="carte">
+
+    <!-- Onglet numéro + épée -->
+    <div class="onglets">
+      <div class="numero" [class.lifted]="liftedIndex === 0" (click)="lift(0)" >{{ chapitre?.id }}</div>
+
+      @if (chapitre?.objet?.length > 0) {
+        <div class="icone" [class.lifted]="liftedIndex === 1" (click)="lift(1)">
+          <div class="objets" id="objets">
+            <img src="assets/icon/all_items.png" />
+          </div>
+      </div>
+      }
+      
+      @if (chapitre?.effet?.length > 0) {
+        <div class="icone" [class.lifted]="liftedIndex === 2" (click)="lift(2)">
+          <div class="effets" id="effets">
+            <img src="assets/icon/effeSF.png" />
+          </div>
+        </div>
+      } 
+    </div>
+
+    <!-- Contenu chapitre -->
+    @if (showObjets) {
+      <div class="sac"> 
+        <div class="typeObj">
+          <div class="logo">
+            <img src="assets/icon/arme.png"/>
+          </div>
+          <div class="cont">1/2</div>
+        </div>
+        <div class="typeObj">
+          <div class="logo">
+            <img src="assets/icon/objet.png"/>
+          </div>
+          <div class="nbr">2</div>
+          <div class="logo">
+            <img src="assets/icon/repas.png"/>
+          </div>
+          <div class="nbr2">3</div>
+          <div class="cont">5/8</div>
+        </div>
+        <div class="typeObj">
+          <div class="logo">
+            <img src="assets/icon/bourse.png"/>
+          </div>
+          <div class="cont">15/50</div>
+        </div>
+      </div>
+      @for (objet of chapitre?.objet; track $index) {
+        <div class="objetBox" [class.disabled]="objet.valeur <= 0 || !objet.optionnel" (click)="utiliserObjet(objet)">
+          <div class="headerObjet">
+            <div class="titrObj">
+              {{ objet.objet.nom }}
+            </div>
+            @if (objet.optionnel) {
+              <div class="multi">x {{ objet.valeur }}</div>
+            } @else {
+              <div class="multi">x {{ objet.valeur }} Récupéré</div>
+            }
+          </div>
+
+          <div class="contenu">
+            <div class="imgObjet" id="imgObjet">
+              <img [src]="'assets/icon/' + objet.objet.categorie.toLowerCase() + '.png'" />
+            </div>
+
+            <div class="descObjet"> {{ objet.objet.description }}</div>
+
+            @if (objet.objet.effet.length > 0) {
+              <div class="effetObjet">
+                <div class="typeEffet">{{ objet.objet.effet[0].type }}</div>
+                <div class="valeurEffet">+ {{ objet.objet.effet[0].valeur }}</div>
+              </div>
+              }
+          </div>
+        </div>
+      }
+    }
+
+    @if (showEffets) {
+      <div class="texte" id="texteScroll"> 
+        <h3>Effets sur le personnage :</h3>
+        <ul>
+          @for (effet of chapitre?.effet; track $index) {
+            <li>{{ effet }}</li>
+          }
+        </ul>
+      </div>
+    }
+
+    @if (!showObjets && !showEffets) {
+      <div class="texte" id="texteScroll"> 
+        <p>{{ chapitre?.text }}</p>
+      </div>
+    }
+  </div>
+
+  <div class="liens" style="display: flex;" id="liens">
+   @for (lien of chapitre?.lien; track $index) {
+      <button class="lien-btn" (click)="navigateTo(+lien.page)">
+        {{ lien.page }}
+      </button>
+    }
+  </div>
+  <div class="liens" style="display: none;" id="takeAllBtn">
+      <button class="lien-btn" (click)="takeAll()">
+        Prendre tout
+      </button>
+  </div>
+
+</ion-content>
