@@ -16,8 +16,8 @@ public class Objet {
   private String nom;
   private String description;
 
-   @Enumerated(EnumType.STRING)
-    private CategorieObjet categorie;
+  @Enumerated(EnumType.STRING)
+  private CategorieObjet categorie;
 
 
   @ManyToMany(cascade = CascadeType.ALL)
