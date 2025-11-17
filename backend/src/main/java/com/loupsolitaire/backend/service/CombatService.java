@@ -149,15 +149,18 @@ public class CombatService {
         int habJ = j.getHabilite() + j.getHabiliteTemporaire() + combat.getBonusHabilite();
         int habE = e.getHabilite();
         int diff = habJ - habE;
+        System.out.println("Différence Habilité (" + habJ + " - " + habE + ") : " + diff);
 
         int col = diffToColumn(diff);
         int hasard = tirageHasard();
         combat.setHasard(hasard);
+        System.out.println("Hasard : " + hasard);
 
         int degats = TABLE_LS[col][hasard];
 
         e.setEndurance(e.getEndurance() + degats);
         combat.setBonusHabilite(0);
+        System.out.println("🗡️ Dégâts infligés à l'ennemi : " + degats);
 
         if (e.getEndurance() <= 0) {
             combat.setCombatTermine(true);
@@ -172,21 +175,25 @@ public class CombatService {
         int habJ = j.getHabilite() + j.getHabiliteTemporaire();
         int habE = e.getHabilite();
         int diff = habJ - habE;
+        System.out.println("Différence Habilité (" + habJ + " - " + habE + ") : " + diff);
 
         int col = diffToColumn(diff);
         int hasard = tirageHasard();
         combat.setHasard(hasard);
+        System.out.println("Hasard : " + hasard);
 
         int degatsBase = TABLE_E[col][hasard];
 
         // Appliquer réduction de dégâts si en défense
         int reduction = combat.getReductionDegat();
         if (reduction > 0) {
+            System.out.println("Réduction de dégâts appliquée : " + reduction + "%");
             double d = degatsBase * (100.0 - reduction) / 100.0;
             degatsBase = (int) Math.floor(d);
         }
 
         j.setEndurance(j.getEndurance() + degatsBase);
+        System.out.println("🛡️ Dégâts subis par le joueur : " + degatsBase);
 
         // reset défense
         combat.setReductionDegat(0);
@@ -199,8 +206,10 @@ public class CombatService {
     private void defenseJoueur(Combat combat) {
         int hasard = tirageHasard();
         combat.setHasard(hasard);
+        System.out.println("Hasard : " + hasard);
         combat.setReductionDegat(REDUCTION_DEFENSE[hasard]);
         combat.setBonusHabilite(BONUS_HABILITE[hasard]);
+        System.out.println("🛡️ Joueur en défense : Réduction " + REDUCTION_DEFENSE[hasard] + "%, Bonus Habilité " + BONUS_HABILITE[hasard]);
     }
 
     private void utiliserObjet(Combat combat, Objet objet) {

@@ -40,7 +40,7 @@ public class JoueurService {
         joueur.setEnduranceTemporaire(0);
         joueur.setEndurance(initEndurance());
         joueur.setEnduranceMax(joueur.getEndurance());
-        joueur.setChapActuel(12);
+        joueur.setChapActuel(0);
     }
 
     public void caisseInitiale(Joueur joueur) {
