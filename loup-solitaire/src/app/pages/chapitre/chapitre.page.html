@@ -28,7 +28,7 @@
       @if (chapitre?.objet?.length > 0) {
         <div class="icone" [class.lifted]="liftedIndex === 1" (click)="lift(1)">
           <div class="objets" id="objets">
-            <img src="assets/icon/all_items.png" />
+            <img src="assets/icon/general/all_items.png" />
           </div>
       </div>
       }
@@ -36,7 +36,7 @@
       @if (chapitre?.effet?.length > 0) {
         <div class="icone" [class.lifted]="liftedIndex === 2" (click)="lift(2)">
           <div class="effets" id="effets">
-            <img src="assets/icon/effeSF.png" />
+            <img src="assets/icon/general/effets.png" />
           </div>
         </div>
       } 
@@ -47,24 +47,27 @@
       <div class="sac"> 
         <div class="typeObj">
           <div class="logo">
-            <img src="assets/icon/arme.png"/>
+            <img src="assets/icon/type/arme.png"/>
           </div>
           <div class="cont">1/2</div>
         </div>
         <div class="typeObj">
           <div class="logo">
-            <img src="assets/icon/objet.png"/>
+            <img src="assets/icon/type/objet.png"/>
           </div>
           <div class="nbr">2</div>
           <div class="logo">
-            <img src="assets/icon/repas.png"/>
+            <img src="assets/icon/type/repas2.png"/>
           </div>
           <div class="nbr2">3</div>
+          <div class="logo">
+            <img src="assets/icon/general/sac.png"/>
+          </div>
           <div class="cont">5/8</div>
         </div>
         <div class="typeObj">
           <div class="logo">
-            <img src="assets/icon/bourse.png"/>
+            <img src="assets/icon/type/bourse.png"/>
           </div>
           <div class="cont">15/50</div>
         </div>
@@ -78,14 +81,26 @@
             @if (objet.optionnel) {
               <div class="multi">x {{ objet.valeur }}</div>
             } @else {
-              <div class="multi">x {{ objet.valeur }} Récupéré</div>
+              @if (objet.valeur < 0) {
+                <div class="multi">{{ objet.valeur }}</div>
+              } @else {
+              <div class="multi">{{ objet.valeur }} Récupéré</div>
+              }
             }
           </div>
 
           <div class="contenu">
-            <div class="imgObjet" id="imgObjet">
-              <img [src]="'assets/icon/' + objet.objet.categorie.toLowerCase() + '.png'" />
-            </div>
+            @if (objet.objet.categorie != "OBJETS_SPECIAUX") {
+              <div class="imgObjet" id="imgObjet">
+                <img [src]="'assets/icon/type/' + objet.objet.categorie.toLowerCase() + '.png'" />
+              </div>
+            }
+
+            @if (objet.objet.categorie == "OBJETS_SPECIAUX") {
+              <div class="imgObjet" id="imgObjet">
+                <img [src]="'assets/icon/special/' + objet.objet.id + '.png'" />
+              </div>
+            }
 
             <div class="descObjet"> {{ objet.objet.description }}</div>
 
@@ -101,19 +116,39 @@
     }
 
     @if (showEffets) {
-      <div class="texte" id="texteScroll"> 
-        <h3>Effets sur le personnage :</h3>
-        <ul>
-          @for (effet of chapitre?.effet; track $index) {
-            <li>{{ effet }}</li>
-          }
-        </ul>
-      </div>
+      @for (effet of chapitre?.effet; track $index) {
+        <div class="objetBox">
+          <div class="headerEffet">
+            <div class="titreEffet">
+              {{ effet.type.toUpperCase() }}
+            </div>
+          </div>
+
+          <div class="contenu">
+            <div class="imgObjet" id="imgObjet">
+              <img [src]="'assets/icon/general/effets.png'" />
+            </div>
+            @if (effet.valeur > 0) {
+              <div class="descObjet"> Gain d'{{ effet.type }}</div>
+              <div class="effetObjet">
+                <div class="typeEffet">{{ effet.type }}</div>
+                <div class="valeurEffet">+ {{ effet.valeur }}</div>
+              </div>
+            } @else {
+              <div class="descObjet"> Perte d'{{ effet.type }}</div>
+              <div class="effetObjet" style="color: #EB5D2C; background: #EB5D2C22">
+                <div class="typeEffet">{{ effet.type }}</div>
+                <div class="valeurEffet">{{ effet.valeur }}</div>
+              </div>
+            }
+          </div>
+        </div>
+      }
     }
 
     @if (!showObjets && !showEffets) {
       <div class="texte" id="texteScroll"> 
-        <p>{{ chapitre?.text }}</p>
+        <span>{{ chapitre?.text }}</span>
       </div>
     }
   </div>

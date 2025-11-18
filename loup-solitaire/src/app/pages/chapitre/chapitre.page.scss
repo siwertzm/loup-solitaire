@@ -43,7 +43,7 @@ ion-content::part(background) {
 .bar {
   width: 180px;
   height: 18px;
-  border-radius: 5px;
+  border-radius: 6px;
   position: relative;
   overflow: hidden;
   border: 1px solid #232323;
@@ -61,13 +61,14 @@ ion-content::part(background) {
 
   .value {
     height: 100%;
+    border-radius: 4px;
   }
 }
 
 .bar.endurance {
-  background: #ffbdbd;
+  background: #E5D2B4;
   .value {
-    background: #c0392b;
+    background: #EB5D2C;
   }
 }
 
@@ -84,7 +85,7 @@ ion-content::part(background) {
 .carte {
   background: #E5E4C9;
   border-radius: 28px;
-  padding: 10px 25px 10px;
+  padding: 25px;
   margin: 4rem 30px 20px;
   box-shadow: 0px 0px 10px #000000;
   min-height: 380px;
@@ -118,7 +119,7 @@ ion-content::part(background) {
 .numero {
   background: #F5C988;
   color: #232323;
-  padding: 8px 16px;
+  padding: 8px 10px;
   border-radius: 14px 14px 0 0;
   font-size: 18px;
   font-weight: bold;
@@ -212,7 +213,7 @@ ion-content::part(background) {
 .sac{
   display: flex;
   justify-content: space-between;
-  padding: 10px 0px;
+  margin-bottom: 20px;
   color: #232323;
   opacity: 0.45;
 }
@@ -222,7 +223,7 @@ ion-content::part(background) {
   justify-content: center;
   align-items: center;
   border: 3px solid #232323;
-  border-radius: 15px;
+  border-radius: 14px;
 }
 
 .logo {
@@ -254,9 +255,9 @@ ion-content::part(background) {
   width: 100%;
   background: transparent;
   border: 3px solid #232323;
-  border-radius: 28px;
-  padding: 10px 10px;
-  margin-top: 15px;
+  border-radius: 14px;
+  padding: 10px;
+  margin-bottom: 20px;
   box-shadow: 0 2px 6px #00000033;
   position: relative;
   display: flex;
@@ -282,8 +283,19 @@ ion-content::part(background) {
   justify-content: space-between;
   align-items: center;
   position: absolute;
-  top: -17px;
+  top: -14px;
   left: 10px;
+  right: 10px;
+  width: auto;
+}
+
+.headerEffet {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: -17px;
+  left: 15px;
   right: 10px;
   width: auto;
 }
@@ -292,6 +304,16 @@ ion-content::part(background) {
  * TITRE AVEC LIGNE
  *******************************************/
 .titrObj {
+  font-size: 14px;
+  font-weight: 800;
+  color: #111;
+  margin-left: 10px;
+  padding-left: 6px;
+  padding-right: 6px;
+  background-color: #E5E4C9;
+}
+
+.titreEffet {
   font-size: 20px;
   font-weight: 800;
   color: #111;
@@ -344,7 +366,7 @@ ion-content::part(background) {
 .effetObjet {
   background: #E4F9E8;
   padding: 5px 10px;
-  border-radius: 12px;
+  border-radius: 7px;
   text-align: right;
   color: #27ae60;
 
