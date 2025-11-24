@@ -181,7 +181,16 @@ public class EffetService {
         }
     }
 
+    public void appliquerEffetRepas(Joueur joueur, Effet effet) {
+        if (!joueur.getRepas().isEmpty()) {
+            joueur.getRepas().remove(joueur.getRepas().size() - 1);
+            joueurRepository.save(joueur);
+            return;
+        }
 
+        joueurService.modifierEndurance(joueur, -3);
+        return;
+    }
 
 
     

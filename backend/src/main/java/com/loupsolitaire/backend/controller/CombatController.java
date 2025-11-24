@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 
 @RestController
-@RequestMapping("/api/combats")
+@RequestMapping("/combats")
 @RequiredArgsConstructor
 public class CombatController {
 

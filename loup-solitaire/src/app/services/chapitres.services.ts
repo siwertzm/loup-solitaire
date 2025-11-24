@@ -7,11 +7,15 @@ import { Observable } from 'rxjs';
 })
 export class ChapitreService {
 
-  private apiUrl = 'http://localhost:8080/api/chapitres/chap'; // 🔥 À adapter si ton backend diffère
+  private apiUrl = 'http://localhost:8080/chapitres';
 
   constructor(private http: HttpClient) {}
 
   getChapitre(id: number): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/${id}`);
+  }
+
+  getLiens(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/lien`);
   }
 }

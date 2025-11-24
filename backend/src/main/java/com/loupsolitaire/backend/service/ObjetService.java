@@ -61,11 +61,10 @@ public class ObjetService {
             case OBJETS_SPECIAUX -> ajouterObjetSpeciaux(joueur, objet, quantite);
             case ARME -> ajouterArme(joueur, objet, quantite);
             case OBJET, REPAS -> {
-                if (!hasPlace(joueur)) {
-                    throw new RuntimeException("🎒 Votre sac à dos est plein (8 objets ou repas maximum)");
-                }
-
                 for (int i = 0; i < quantite; i++) {
+                    if (!hasPlace(joueur)) {
+                        throw new RuntimeException("⚠️ Le sac à dos est plein. Impossible d'ajouter plus d'objets ou de repas.");
+                    }
                     if (categorie == CategorieObjet.OBJET) {
                         joueur.getObjets().add(objet);
                     } else {
@@ -79,8 +78,9 @@ public class ObjetService {
                 return joueur;
             }
         }
+        joueurRepository.save(joueur);
 
-        return joueurRepository.save(joueur);
+        return joueur;
     }
 
     @Transactional
@@ -109,15 +109,7 @@ public class ObjetService {
                     }
             }
             case REPAS -> {
-                boolean aUnRepas = joueur.getRepas().contains(objet);
-                System.out.println("Le joueur possède-t-il le repas ? " + aUnRepas);
-                if (aUnRepas) {
-                    for (int i = 0; i < quantite; i++) {
-                        joueur.getRepas().remove(objet);
-                    }
-                } else {
-                    joueur.setEndurance(joueur.getEndurance() - 3);
-                }  
+                joueur.getRepas().remove(objet);
             }
             case BOURSE -> retirerOr(joueur, objet, quantite);
             default -> {

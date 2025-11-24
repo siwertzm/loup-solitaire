@@ -3,14 +3,20 @@
   <!-- BARRES DE STATS -->
   <div class="header">
     <div class="stats">
+      <div class="habilete">
+        @if (joueur?.habilite != joueur?.habiliteBase) {
+          <span class="detail">({{joueur?.habilite - joueur?.habiliteBase}} + {{joueur?.habiliteBase}})</span>
+          <span>{{joueur?.habilite}}</span>
+        } @else {
+          <span>{{joueur?.habilite}}</span>
+        }
+        <div class="logoHab">
+          <img src="assets/icon/general/habilite.png" alt="habilete" />
+        </div>
+      </div>
       <div class="bar endurance">
         <span>Endurance</span>
-        <div class="value" [style.width.%]="(endurance/enduranceMax)*100"></div>
-      </div>
-
-      <div class="bar habilete">
-        <span>Habilité</span>
-        <div class="value" style="width: 100%"></div>
+        <div class="value" [style.width.%]="(joueur?.endurance/joueur?.enduranceMax)*100"></div>
       </div>
     </div>
     <div>
@@ -49,27 +55,27 @@
           <div class="logo">
             <img src="assets/icon/type/arme.png"/>
           </div>
-          <div class="cont">1/2</div>
+          <div class="cont">{{joueur?.armes?.length}}/2</div>
         </div>
         <div class="typeObj">
           <div class="logo">
             <img src="assets/icon/type/objet.png"/>
           </div>
-          <div class="nbr">2</div>
+          <div class="nbr">{{joueur?.objets?.length}}</div>
           <div class="logo">
             <img src="assets/icon/type/repas2.png"/>
           </div>
-          <div class="nbr2">3</div>
+          <div class="nbr2">{{joueur?.repas?.length}}</div>
           <div class="logo">
             <img src="assets/icon/general/sac.png"/>
           </div>
-          <div class="cont">5/8</div>
+          <div class="cont">{{joueur?.objets?.length + joueur?.repas?.length}}/8</div>
         </div>
         <div class="typeObj">
           <div class="logo">
             <img src="assets/icon/type/bourse.png"/>
           </div>
-          <div class="cont">15/50</div>
+          <div class="cont">{{joueur?.bourses?.length}}/50</div>
         </div>
       </div>
       @for (objet of chapitre?.objet; track $index) {
@@ -147,17 +153,25 @@
     }
 
     @if (!showObjets && !showEffets) {
-      <div class="texte" id="texteScroll"> 
-        <span>{{ chapitre?.text }}</span>
+      <div class="texte-wrapper" [class.no-fade-top]="atTop" [class.no-fade-bottom]="atBottom">
+        <div class="texte" id="texteScroll" (scroll)="onScroll($event)"> 
+          <span>{{ chapitre?.text }}</span>
+        </div>
       </div>
     }
   </div>
 
   <div class="liens" style="display: flex;" id="liens">
-   @for (lien of chapitre?.lien; track $index) {
-      <button class="lien-btn" (click)="navigateTo(+lien.page)">
-        {{ lien.page }}
+   @for (lien of liens; track $index) {
+      @if (lien == null) {
+        <button class="lien-btn" style="display: none;" (click)="navigateTo(+lien)">
+        {{ lien }}
       </button>
+      } @else {
+      <button class="lien-btn" (click)="navigateTo(+lien)">
+        {{ lien }}
+      </button>
+      }
     }
   </div>
   <div class="liens" style="display: none;" id="takeAllBtn">

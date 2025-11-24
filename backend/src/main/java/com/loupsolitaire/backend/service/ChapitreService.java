@@ -268,6 +268,7 @@ public class ChapitreService {
                 case ENDURANCE -> effetService.appliquerEffetEndurance(joueur, effet);
                 case HABILETE  -> effetService.appliquerEffetHabilete(joueur, effet);
                 case VOL       -> effetService.appliquerEffetVol(joueur, effet);
+                case REPAS    -> effetService.appliquerEffetRepas(joueur, effet);
                 default -> System.err.println("⚠️ Type d'effet inconnu : " + effet.getType());
             }
         });

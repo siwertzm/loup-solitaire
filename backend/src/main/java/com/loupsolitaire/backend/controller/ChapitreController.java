@@ -19,7 +19,7 @@ import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:8100")
 @RestController
-@RequestMapping("/api/chapitres")
+@RequestMapping("/chapitres")
 @RequiredArgsConstructor
 public class ChapitreController {
 

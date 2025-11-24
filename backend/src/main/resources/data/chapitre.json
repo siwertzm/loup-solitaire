@@ -856,7 +856,13 @@
     "text": "Vous vous sentez fatigué et affamé, et il vous faut faire une halte pour prendre un Repas. Après avoir mangé, vous rebroussez chemin jusqu'à la citadelle et vous marchez le long de ses hautes murailles de pierre. Vous découvrez une autre entrée dans le mur est, gardée, elle aussi, par deux soldats en armes. Si vous voulez vous approcher d'eux et leur raconter votre histoire, rendez-vous au 289. Si vous maîtrisez la Discipline Kaï du Camouflage, rendez-vous au 282.",
     "combat": false,
     "ennemi": null,
-    "effet": null,
+    "effet": [
+      {
+        "type": "repas",
+        "valeur": -1,
+        "cond": null
+      }
+    ],
     "lien": [
       {
         "page": "289",
@@ -872,13 +878,7 @@
       }
     ],
     "id": 37,
-    "objet": [
-      {
-        "id": "repas",
-        "valeur": -1,
-        "optionnel": false
-      }
-    ]
+    "objet": []
   },
   {
     "text": "Pendant plus d'une demi-heure, vous poursuivez votre chemin dans la forêt, parmi les fougères et les feuillages touffus des arbres et des buissons. Bientôt, vous parvenez au bord d’un ruisseau où vous vous arrêtez quelques instants pour vous laver le visage et boire un peu d’eau. Lorsque vous vous sentez rafraîchi, vous traversez le ruisseau et vous reprenez votre marche. Quelques instants plus tard, vous sentez une odeur de bois brûlé qui semble venir du nord. Si vous souhaitez aller voir d’où vient cette odeur, rendez-vous au 128. Si vous préférez ne pas y prêter attention, rendez-vous au 347.",
@@ -2397,14 +2397,14 @@
   {
     "text": "Vous parvenez bientôt à une petite clairière. En son centre, vous trouvez un banc taillé dans le tronc d'un arbre. Vous avez faim, et il vous faut prendre un Repas, sinon, vous perdrez 3 points d'ENDURANCE. Lorsque vous avez fini de manger, vous pourrez quitter la clairière par le sud en vous rendant au 28. Mais si vous préférez emprunter le sentier plus étroit qui mène vers l'est en s'enfonçant dans la forêt, rendez-vous au 201.",
     "combat": false,
-    "objet": [
+    "objet": [],
+    "effet": [
       {
-        "id": "repas",
+        "type": "repas",
         "valeur": -1,
-        "optionnel": false
+        "cond": null
       }
     ],
-    "effet": null,
     "ennemi": null,
     "lien": [
       { "page": "28", "cond": null },
@@ -2677,14 +2677,14 @@
   {
     "text": "Après avoir marché pendant quelques minutes, vous passez devant une petite hutte couverte de mousse qui a été bâtie à l'écart du chemin. Vous avez faim et il vous faut prendre un Repas, sinon, vous perdez 3 points d'ENDURANCE. Vous constatez bientôt que le chemin tourne vers l'est. Si vous voulez continuer à le suivre, rendez-vous au 42. Si vous préférez revenir sur vos pas, rendez-vous au 28.",
     "combat": false,
-    "objet": [
+    "objet": [],
+    "effet": [
       {
-        "id": "repas",
+        "type": "repas",
         "valeur": -1,
-        "optionnel": false
+        "cond": null
       }
     ],
-    "effet": null,
     "ennemi": null,
     "lien": [
       {
@@ -3015,18 +3015,18 @@
     "text": "Vous vous hissez au sommet de la luxueuse roulotte et vous vous installez au milieu des malles et des valises. La nuit bientôt tombera sur la grand-route. Un vent frais souffle de l'ouest, qui vous oblige à bien serrer votre cape autour de vous pour n'avoir pas trop froid. Au-dessous, à l'intérieur de la roulotte, vous entendez des gens parler et une délicieuse odeur de viande rôtie vous monte aux narines. Elle vient vous rappeler que vous avez très faim et qu'il vous faut prendre un Repas, sinon, vous perdrez 3 points d'ENDURANCE. La fatigue a tôt fait d'avoir raison de vous et vous finissez par sombrer dans un sommeil agité. Rendez-vous au 64.",
     "combat": false,
     "ennemi": null,
-    "effet": null,
+    "effet": [
+      {
+        "type": "repas",
+        "valeur": -1,
+        "cond": null
+      }
+    ],
     "lien": [
       { "page": "64", "cond": null }
     ],
     "id": 168,
-    "objet": [
-      {
-        "id": "repas",
-        "valeur": -1,
-        "optionnel": false
-      }
-    ]
+    "objet": []
   },
   {
     "text": "Lorsque vous passez devant les crânes, chacun d'eux pivote lentement sur lui-même comme pour suivre le moindre de vos mouvements. Vous vous trouvez à présent au milieu de cette chambre mortuaire et, soudain, vous entendez un bruit d'os qui se brise. Des formes monstrueuses éclosent alors des crânes en déployant des ailes semblables à celles des chauves-souris. Dix de ces créatures à la peau gluante vous attaquent aussitôt, et il vous faut les combattre en les considérant comme un seul et même adversaire. MONSTRES DES CRYPTES HABILETÉ: 16 ENDURANCE: 16 Après avoir livré le premier assaut (obligatoire), vous aurez le droit de prendre la fuite en courant dans le couloir. Rendez-vous pour cela au 23. Si vous décidez de combattre et que vous êtes vainqueur, rendez-vous au 137.",
@@ -3292,7 +3292,13 @@
     "text": "La roulotte a échappé à tout contrôle et cahote dangereusement sur le bas-côté de la route, parmi les pierres et les nids-de-poule. Vous parvenez cependant, au prix de bien des efforts, à ramener sur la chaussée les chevaux saisis de panique et à arrêter l'attelage. En fouillant rapidement le véhicule, vous découvrez 40 Pièces d'Or, une Epée et une quantité de nourriture équivalant à 4 Repas. Si vous souhaitez conserver l'une ou l'autre de ces trouvailles (ou toutes ensemble), inscrivez-les sur votre Feuille d'Aventure. Les épreuves que vous avez subies vous ont épuisé, et il vous faut prendre un Repas. Vous plongerez ensuite dans un sommeil profond. Rendez-vous au 64.",
     "combat": false,
     "ennemi": null,
-    "effet": null,
+    "effet": [
+      {
+        "type": "repas",
+        "valeur": -1,
+        "cond": null
+      }
+    ],
     "lien": [
       { "page": "64", "cond": null }
     ],
@@ -3300,8 +3306,7 @@
     "objet": [
       { "id": "or", "valeur": 40, "optionnel": true },
       { "id": "epee", "valeur": 1, "optionnel": true },
-      { "id": "repas", "valeur": 4, "optionnel": true },
-      { "id": "repas", "valeur": -1, "optionnel": false }
+      { "id": "repas", "valeur": 4, "optionnel": false }
     ]
   },
   {
@@ -4071,14 +4076,14 @@
       }
     ],
     "id": 235,
-    "objet": [
+    "objet": [],
+    "effet": [
       {
-        "id": "repas",
+        "type": "repas",
         "valeur": -1,
-        "optionnel": false
+        "cond": null
       }
     ],
-    "effet": null,
     "ennemi": null
   },
   {
@@ -4941,7 +4946,7 @@
       },
       {
         "type": "habilite",
-        "valeur": -4,
+        "valeur": -2,
         "cond": [{
           "type": "discipline",
           "targetId": "bouclier_psychique",
@@ -5253,14 +5258,14 @@
   {
     "text": "Vous avez marché pendant plus d'une heure en surveillant le ciel de peur de voir apparaître des Kraans. Par deux fois, vous avez aperçu leurs silhouettes caractéristiques qui se dessinaient au loin, mais la promptitude de vos réflexes vous a gardé d'être repéré. Cette longue marche vous a affamé cependant et il vous faut prendre un Repas, sinon vous perdrez 3 points d'ENDURANCE. Vous poursuivrez ensuite votre chemin en vous rendant au 13.",
     "combat": false,
-    "objet": [
+    "objet": [],
+    "effet": [
       {
-        "id": "repas",
+        "type": "repas",
         "valeur": -1,
-        "optionnel": false
+        "cond": null
       }
     ],
-    "effet": null,
     "ennemi": null,
     "lien": [
       {

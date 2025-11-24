@@ -37,7 +37,6 @@ ion-content::part(background) {
 .stats {
   display: flex;
   flex-direction: column;
-  gap: 8px;
 }
 
 .bar {
@@ -72,11 +71,26 @@ ion-content::part(background) {
   }
 }
 
-.bar.habilete {
-  background: #b6f7c3;
-  .value {
-    background: #27ae60;
-  }
+.habilete {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 4px;
+  font-size: 25px;
+  font-weight: bold;
+  color: #000000;
+}
+
+.detail {
+  padding-top: 6px;
+  padding-right: 6px;
+  font-size: 14px;
+  color: #000000;
+}
+
+.logoHab {
+  width: 40px;
+  height: auto;
 }
 
 /***********************************
@@ -86,6 +100,7 @@ ion-content::part(background) {
   background: #E5E4C9;
   border-radius: 28px;
   padding: 25px;
+  padding-bottom: 2px !important;
   margin: 4rem 30px 20px;
   box-shadow: 0px 0px 10px #000000;
   min-height: 380px;
@@ -138,19 +153,63 @@ ion-content::part(background) {
 
 
 /* TEXTE DU CHAPITRE */
-.texte {
+.texte-wrapper {
+  position: relative;
   flex: 1;
+  overflow: hidden;
+}
+
+/* Fade-out fixe */
+.texte-wrapper::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(
+    to bottom,
+    rgba(229, 228, 201, 0),
+    rgba(229, 228, 201, 1)
+  );
+  pointer-events: none;
+  z-index: 20;
+}
+
+.texte-wrapper::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(
+    to top,
+    rgba(229, 228, 201, 0),
+    rgba(229, 228, 201, 1)
+  );
+  pointer-events: none;
+  z-index: 20;
+}
+
+.texte-wrapper.no-fade-top::before {
+  opacity: 0;
+}
+
+.texte-wrapper.no-fade-bottom::after {
+  opacity: 0;
+}
+
+.texte {
+  height: 100%;
   overflow-y: auto;
-  padding-right: 6px;
+  padding-bottom: 20px;
 
   font-size: 20px;
   color: #333;
-  text-align: justify;
   line-height: 1.45;
 
-  /* Cacher la scrollbar */
-  scrollbar-width: none; 
-  -ms-overflow-style: none; 
+  scrollbar-width: none;
 }
 
 .texte::-webkit-scrollbar {

@@ -1,0 +1,38 @@
+<ion-content class="auth-page">
+
+  <div class="auth-card">
+
+    <h1>Connexion</h1>
+
+    <form (ngSubmit)="login()">
+
+      <ion-input
+        placeholder="Nom d'utilisateur"
+        type="text"
+        [(ngModel)]="username"
+        name="username"
+        required>
+      </ion-input>
+
+      <ion-input
+        placeholder="Mot de passe"
+        type="password"
+        [(ngModel)]="password"
+        name="password"
+        required>
+      </ion-input>
+
+      <ion-button expand="block" type="submit">
+        Se connecter
+      </ion-button>
+
+    </form>
+
+    <div class="link">
+      Pas encore de compte ?
+      <a routerLink="/register">Créer un compte</a>
+    </div>
+
+  </div>
+
+</ion-content>

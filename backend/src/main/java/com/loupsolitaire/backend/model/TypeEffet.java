@@ -7,6 +7,7 @@ public enum TypeEffet {
 
     ENDURANCE("endurance"),
     HABILETE("habilite"),
+    REPAS("repas"),
     VOL("vol");
 
     private final String value;

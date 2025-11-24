@@ -9,6 +9,10 @@ import com.loupsolitaire.backend.request.RegisterRequest;
 import com.loupsolitaire.backend.response.AuthResponse;
 import lombok.RequiredArgsConstructor;
 
+import java.util.Map;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -20,7 +24,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/auth")
 @RequiredArgsConstructor
 public class AuthController {
 
@@ -31,16 +35,17 @@ public class AuthController {
     private final AuthenticationManager authenticationManager;
 
     @PostMapping("/register")
-    public String register(@RequestBody RegisterRequest request) {
+    public ResponseEntity<?> register(@RequestBody RegisterRequest request) {
         if (utilisateurRepository.findByUsername(request.getUsername()).isPresent()) {
-            return "Nom d'utilisateur déjà utilisé";
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(Map.of("error", "Nom d'utilisateur déjà utilisé"));
         }
 
         Utilisateur utilisateur = new Utilisateur();
         utilisateur.setUsername(request.getUsername());
         utilisateur.setPassword(passwordEncoder.encode(request.getPassword()));
         utilisateurRepository.save(utilisateur);
-        return "✅ Utilisateur créé avec succès";
+        return ResponseEntity.ok(Map.of("message", "Utilisateur créé avec succès"));
     }
 
     @PostMapping("/login")

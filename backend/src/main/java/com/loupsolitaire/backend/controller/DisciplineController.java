@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/disciplines")
+@RequestMapping("/disciplines")
 @RequiredArgsConstructor
 public class DisciplineController {
 

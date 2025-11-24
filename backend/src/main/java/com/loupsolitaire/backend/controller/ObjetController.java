@@ -2,7 +2,10 @@ package com.loupsolitaire.backend.controller;
 
 import com.loupsolitaire.backend.model.Joueur;
 import com.loupsolitaire.backend.model.Objet;
+import com.loupsolitaire.backend.model.ObjetPris;
+import com.loupsolitaire.backend.repository.ChapitreRepository;
 import com.loupsolitaire.backend.repository.JoueurRepository;
+import com.loupsolitaire.backend.repository.ObjetPrisRepository;
 import com.loupsolitaire.backend.repository.ObjetRepository;
 import com.loupsolitaire.backend.service.JoueurActifService;
 import com.loupsolitaire.backend.service.JoueurService;
@@ -21,7 +24,7 @@ import java.util.Optional;
 
 
 @RestController
-@RequestMapping("/api/objets")
+@RequestMapping("/objets")
 @RequiredArgsConstructor
 public class ObjetController {
 
@@ -30,6 +33,8 @@ public class ObjetController {
   private final ObjetService objetService;
   private final JoueurActifService joueurActifService;
   private final JoueurService joueurService;
+  private final ObjetPrisRepository objetPrisRepository;
+  private final ChapitreRepository chapitreRepository;
 
   // Récupérer tous les objets
   @GetMapping
@@ -45,7 +50,7 @@ public class ObjetController {
 
   //ajouter un objet a l'utilisateur actif
   @PostMapping("/ajouter/{id}")
-  public ResponseEntity<String> ajouterObjet(@PathVariable String id, @AuthenticationPrincipal UserDetails userDetails) {
+  public ResponseEntity<Joueur> ajouterObjet(@PathVariable String id, @AuthenticationPrincipal UserDetails userDetails) {
     // Récupérer l'objet par son id
     Objet objet = objetRepository.findById(id)
         .orElseThrow(() -> new RuntimeException("Objet non trouvé"));
@@ -59,12 +64,33 @@ public class ObjetController {
     Joueur joueur = joueurRepository.findById(joueurId)
         .orElseThrow(() -> new RuntimeException("Joueur actif non trouvé"));
     
+    // recuperer le chapitre
+    int chapitreId = joueur.getChapActuel();
+    int maxChapitre = chapitreRepository.getQuantiteChapitre(chapitreId, id);
+    // Vérifier si l'objet a déjà été pris dans ce chapitre
+    ObjetPris prise = objetPrisRepository.findByJoueurAndChapitreIdAndObjetId(joueur, chapitreId, id).orElse(null);
+
+    if (prise != null && prise.getQuantite() >= maxChapitre) {
+        return ResponseEntity.status(409).build();
+    }
+
+    Joueur updatedJoueur = objetService.ajouterObjet(joueur, objet, 1);
+
+    if (prise == null) {
+        prise = new ObjetPris();
+        prise.setJoueur(joueur);
+        prise.setChapitreId(chapitreId);
+        prise.setObjetId(id);
+        prise.setQuantite(1);
+    } else {
+        prise.setQuantite(prise.getQuantite() + 1);
+    }
+    objetPrisRepository.save(prise);
+    
     // Ajouter l'objet au joueur
-    objetService.ajouterObjet(joueur, objet, 1);
+    
 
-    String message = String.format("✅ %s ajouté à %s.", objet.getNom(), joueur.getNom());
-
-    return ResponseEntity.ok(message);
+    return ResponseEntity.ok(updatedJoueur);
   }
 
   @PostMapping("/coffre")
@@ -133,6 +159,21 @@ public class ObjetController {
     String message = String.format("✅ %s retiré de %s.", objet.getNom(), joueur.getNom());
 
     return ResponseEntity.ok(message);
+  }
+
+  @GetMapping("/pris/{chapitreId}")
+  public ResponseEntity<List<ObjetPris>> getObjetsPris(
+        @PathVariable int chapitreId,
+        @AuthenticationPrincipal UserDetails userDetails) {
+
+    Long joueurId = joueurActifService.getJoueurActif(userDetails.getUsername());
+    Joueur joueur = joueurRepository.findById(joueurId)
+        .orElseThrow(() -> new RuntimeException("Joueur introuvable"));
+
+    List<ObjetPris> prises = objetPrisRepository
+        .findAllByJoueurAndChapitreId(joueur, chapitreId);
+
+    return ResponseEntity.ok(prises);
   }
   
 

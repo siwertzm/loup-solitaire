@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/ennemis")
+@RequestMapping("/ennemis")
 @RequiredArgsConstructor
 public class EnnemiController {
 
