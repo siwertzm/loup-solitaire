@@ -18,8 +18,7 @@ public class Utilisateur {
 
   private String password;
 
-
-  @OneToMany(mappedBy = "utilisateur", cascade = CascadeType.ALL)
+  @Transient
   private List<Joueur> joueurs;
 
 }

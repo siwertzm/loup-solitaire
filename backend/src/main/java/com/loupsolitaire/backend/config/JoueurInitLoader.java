@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.boot.CommandLineRunner;
 
 import com.loupsolitaire.backend.model.Discipline;
+import com.loupsolitaire.backend.model.IdDiscipline;
 import com.loupsolitaire.backend.repository.DisciplineRepository;
 
 import java.util.List;
@@ -32,7 +33,7 @@ public class JoueurInitLoader implements CommandLineRunner {
     Objet repas = objetRepository.findById("repas")
         .orElseThrow(() -> new RuntimeException("Objet non trouvé"));
 
-    Discipline discipline = disciplineRepository.findById("maitrise_des_armes")
+    Discipline discipline = disciplineRepository.findById(IdDiscipline.MAITRISE_ARMES)
         .orElseThrow(() -> new RuntimeException("Discipline non trouvée"));
 
     Objet armeMaitrise = objetRepository.findById("epee")
@@ -43,6 +44,7 @@ public class JoueurInitLoader implements CommandLineRunner {
         joueur.setNom("Loup Solitaire");
         joueur.setHabilite(15);
         joueur.setEndurance(20);
+        joueur.setEnduranceMax(20);
         joueur.setChapActuel(0);
         joueur.setArmes(List.of(arme));
         joueur.setRepas(List.of(repas));

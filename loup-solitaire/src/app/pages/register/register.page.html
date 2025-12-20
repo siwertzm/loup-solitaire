@@ -1,0 +1,39 @@
+<ion-content class="auth-page">
+  <img src="/assets/illustrations/loup.png" alt="" class="imageLoup">
+  <h2 class="smallTitle">Loup Solitaire</h2>
+  <h1 class="title">Les Maîtres des ténèbres</h1>
+  <div class="auth-card">
+
+    <h1>Créer un compte</h1>
+
+    <form (ngSubmit)="register()">
+
+      <ion-input
+        placeholder="Nom d'utilisateur"
+        [(ngModel)]="username"
+        name="username"
+        required>
+      </ion-input>
+
+      <ion-input
+        placeholder="Mot de passe"
+        type="password"
+        [(ngModel)]="password"
+        name="password"
+        required>
+      </ion-input>
+
+      <ion-button expand="block" type="submit" class="registerBtn">
+        S'inscrire
+      </ion-button>
+
+    </form>
+
+    <div class="link">
+      Déjà un compte ?
+      <button type="button" class="link-btn" (click)="goToLogin()">Se connecter</button>
+    </div>
+
+  </div>
+
+</ion-content>

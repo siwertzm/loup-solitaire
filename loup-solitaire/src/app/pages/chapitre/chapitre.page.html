@@ -1,0 +1,183 @@
+<ion-content fullscreen class="page">
+
+  <!-- BARRES DE STATS -->
+  <div class="header">
+    <div class="stats">
+      <div class="habilete">
+        @if (joueur?.habilite != joueur?.habiliteBase) {
+          <span class="detail">({{joueur?.habilite - joueur?.habiliteBase}} + {{joueur?.habiliteBase}})</span>
+          <span>{{joueur?.habilite}}</span>
+        } @else {
+          <span>{{joueur?.habilite}}</span>
+        }
+        <div class="logoHab">
+          <img src="assets/icon/general/habilite.png" alt="habilete" />
+        </div>
+      </div>
+      <div class="bar endurance">
+        <span>Endurance</span>
+        <div class="value" [style.width.%]="(joueur?.endurance/joueur?.enduranceMax)*100"></div>
+      </div>
+    </div>
+    <div>
+      <img class="avatar" src="assets/illustrations/perso.png" alt="avatar" />
+    </div>
+  </div>
+
+  <!-- CARTE CHAPITRE -->
+  <div class="carte">
+
+    <!-- Onglet numéro + épée -->
+    <div class="onglets">
+      <div class="numero" [class.lifted]="liftedIndex === 0" (click)="lift(0)" >{{ chapitre?.id }}</div>
+
+      @if (chapitre?.objet?.length > 0) {
+        <div class="icone" [class.lifted]="liftedIndex === 1" (click)="lift(1)">
+          <div class="objets" id="objets">
+            <img src="assets/icon/general/all_items.png" />
+          </div>
+      </div>
+      }
+      
+      @if (chapitre?.effet?.length > 0) {
+        <div class="icone" [class.lifted]="liftedIndex === 2" (click)="lift(2)">
+          <div class="effets" id="effets">
+            <img src="assets/icon/general/effets.png" />
+          </div>
+        </div>
+      } 
+    </div>
+
+    <!-- Contenu chapitre -->
+    @if (showObjets) {
+      <div class="sac"> 
+        <div class="typeObj">
+          <div class="logo">
+            <img src="assets/icon/type/arme.png"/>
+          </div>
+          <div class="cont">{{joueur?.armes?.length}}/2</div>
+        </div>
+        <div class="typeObj">
+          <div class="logo">
+            <img src="assets/icon/type/objet.png"/>
+          </div>
+          <div class="nbr">{{joueur?.objets?.length}}</div>
+          <div class="logo">
+            <img src="assets/icon/type/repas2.png"/>
+          </div>
+          <div class="nbr2">{{joueur?.repas?.length}}</div>
+          <div class="logo">
+            <img src="assets/icon/general/sac.png"/>
+          </div>
+          <div class="cont">{{joueur?.objets?.length + joueur?.repas?.length}}/8</div>
+        </div>
+        <div class="typeObj">
+          <div class="logo">
+            <img src="assets/icon/type/bourse.png"/>
+          </div>
+          <div class="cont">{{joueur?.bourses?.length}}/50</div>
+        </div>
+      </div>
+      @for (objet of chapitre?.objet; track $index) {
+        <div class="objetBox" [class.disabled]="objet.valeur <= 0 || !objet.optionnel" (click)="utiliserObjet(objet)">
+          <div class="headerObjet">
+            <div class="titrObj">
+              {{ objet.objet.nom }}
+            </div>
+            @if (objet.optionnel) {
+              <div class="multi">x {{ objet.valeur }}</div>
+            } @else {
+              @if (objet.valeur < 0) {
+                <div class="multi">{{ objet.valeur }}</div>
+              } @else {
+              <div class="multi">{{ objet.valeur }} Récupéré</div>
+              }
+            }
+          </div>
+
+          <div class="contenu">
+            @if (objet.objet.categorie != "OBJETS_SPECIAUX") {
+              <div class="imgObjet" id="imgObjet">
+                <img [src]="'assets/icon/type/' + objet.objet.categorie.toLowerCase() + '.png'" />
+              </div>
+            }
+
+            @if (objet.objet.categorie == "OBJETS_SPECIAUX") {
+              <div class="imgObjet" id="imgObjet">
+                <img [src]="'assets/icon/special/' + objet.objet.id + '.png'" />
+              </div>
+            }
+
+            <div class="descObjet"> {{ objet.objet.description }}</div>
+
+            @if (objet.objet.effet.length > 0) {
+              <div class="effetObjet">
+                <div class="typeEffet">{{ objet.objet.effet[0].type }}</div>
+                <div class="valeurEffet">+ {{ objet.objet.effet[0].valeur }}</div>
+              </div>
+              }
+          </div>
+        </div>
+      }
+    }
+
+    @if (showEffets) {
+      @for (effet of chapitre?.effet; track $index) {
+        <div class="objetBox">
+          <div class="headerEffet">
+            <div class="titreEffet">
+              {{ effet.type.toUpperCase() }}
+            </div>
+          </div>
+
+          <div class="contenu">
+            <div class="imgObjet" id="imgObjet">
+              <img [src]="'assets/icon/general/effets.png'" />
+            </div>
+            @if (effet.valeur > 0) {
+              <div class="descObjet"> Gain d'{{ effet.type }}</div>
+              <div class="effetObjet">
+                <div class="typeEffet">{{ effet.type }}</div>
+                <div class="valeurEffet">+ {{ effet.valeur }}</div>
+              </div>
+            } @else {
+              <div class="descObjet"> Perte d'{{ effet.type }}</div>
+              <div class="effetObjet" style="color: #EB5D2C; background: #EB5D2C22">
+                <div class="typeEffet">{{ effet.type }}</div>
+                <div class="valeurEffet">{{ effet.valeur }}</div>
+              </div>
+            }
+          </div>
+        </div>
+      }
+    }
+
+    @if (!showObjets && !showEffets) {
+      <div class="texte-wrapper" [class.no-fade-top]="atTop" [class.no-fade-bottom]="atBottom">
+        <div class="texte" id="texteScroll" (scroll)="onScroll($event)"> 
+          <span>{{ chapitre?.text }}</span>
+        </div>
+      </div>
+    }
+  </div>
+
+  <div class="liens" style="display: flex;" id="liens">
+   @for (lien of liens; track $index) {
+      @if (lien == null) {
+        <button class="lien-btn" style="display: none;" (click)="navigateTo(+lien)">
+        {{ lien }}
+      </button>
+      } @else {
+      <button class="lien-btn" (click)="navigateTo(+lien)">
+        {{ lien }}
+      </button>
+      }
+    }
+  </div>
+  <div class="liens" style="display: none;" id="takeAllBtn">
+      <button class="lien-btn" (click)="takeAll()">
+        Prendre tout
+      </button>
+  </div>
+
+</ion-content>

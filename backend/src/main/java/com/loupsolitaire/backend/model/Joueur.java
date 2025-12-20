@@ -16,8 +16,16 @@ public class Joueur {
   private Long id;
   private String nom;
   private Integer habilite;
+  private Integer habiliteBase;
+  private Boolean bonusMaitrise = false;
+  private Integer habiliteTemporaire;
+  private Integer enduranceTemporaire;
   private Integer endurance;
+  private Integer enduranceMax;
   private Integer chapActuel;
+  private Long utilisateurId;
+  private Integer dernierHasard;
+  private boolean kdo = false;
 
   @ManyToMany
   @JoinTable(
@@ -74,8 +82,4 @@ public class Joueur {
       inverseJoinColumns = @JoinColumn(name = "objet_id")
   )
   private List<Objet> objetSpeciaux = new ArrayList<>();
-
-  @ManyToOne
-  @JoinColumn(name = "utilisateur_id")
-  private Utilisateur utilisateur;
 }

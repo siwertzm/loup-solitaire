@@ -48,7 +48,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[0, 4]",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -56,7 +56,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[5, 9]",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -150,7 +150,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[0, 2]",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -158,7 +158,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[3, 9]",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -190,7 +190,7 @@
         "cond": [{
           "type": "objet",
           "targetId": "pierre_de_vordak",
-          "valeur": 1
+          "valeur": "1"
         }]
       },
       {
@@ -356,7 +356,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[0, 0]",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -364,7 +364,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[1, 2]",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -372,7 +372,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[3, 9]",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -451,7 +451,7 @@
       },
       {
         "id": "poignard",
-        "valeur": 2,
+        "valeur": 1,
         "optionnel": true
       }
     ]
@@ -467,7 +467,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[5, 9]",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -475,7 +475,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[0, 4]",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -493,7 +493,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[8, 9]",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -501,7 +501,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[0, 7]",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -519,7 +519,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[9, 9]",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -527,7 +527,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[0, 8]",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -545,7 +545,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[0, 4]",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -553,7 +553,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[5, 9]",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -691,7 +691,7 @@
         "cond": [{
           "type": "discipline",
           "targetId": "bouclier_psychique",
-          "valeur": "-1"
+          "valeur": null
         }]
       }
     ],
@@ -789,7 +789,7 @@
           "cond": [{
             "type": "discipline",
             "targetId": "bouclier_psychique",
-            "valeur": "-1"
+            "valeur": null
           }]
         }
       ],
@@ -827,7 +827,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[0, 4]",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -837,7 +837,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[0, 4]",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -845,7 +845,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[5, 9]",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -856,7 +856,13 @@
     "text": "Vous vous sentez fatigué et affamé, et il vous faut faire une halte pour prendre un Repas. Après avoir mangé, vous rebroussez chemin jusqu'à la citadelle et vous marchez le long de ses hautes murailles de pierre. Vous découvrez une autre entrée dans le mur est, gardée, elle aussi, par deux soldats en armes. Si vous voulez vous approcher d'eux et leur raconter votre histoire, rendez-vous au 289. Si vous maîtrisez la Discipline Kaï du Camouflage, rendez-vous au 282.",
     "combat": false,
     "ennemi": null,
-    "effet": null,
+    "effet": [
+      {
+        "type": "repas",
+        "valeur": -1,
+        "cond": null
+      }
+    ],
     "lien": [
       {
         "page": "289",
@@ -872,13 +878,7 @@
       }
     ],
     "id": 37,
-    "objet": [
-      {
-        "id": "repas",
-        "valeur": -1,
-        "optionnel": false
-      }
-    ]
+    "objet": []
   },
   {
     "text": "Pendant plus d'une demi-heure, vous poursuivez votre chemin dans la forêt, parmi les fougères et les feuillages touffus des arbres et des buissons. Bientôt, vous parvenez au bord d’un ruisseau où vous vous arrêtez quelques instants pour vous laver le visage et boire un peu d’eau. Lorsque vous vous sentez rafraîchi, vous traversez le ruisseau et vous reprenez votre marche. Quelques instants plus tard, vous sentez une odeur de bois brûlé qui semble venir du nord. Si vous souhaitez aller voir d’où vient cette odeur, rendez-vous au 128. Si vous préférez ne pas y prêter attention, rendez-vous au 347.",
@@ -989,7 +989,7 @@
         "cond": [{
           "type": "fuite",
           "valeur": "3",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -1007,7 +1007,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[0, 4]",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -1015,7 +1015,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[5, 9]",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -1109,7 +1109,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[0, 4]",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -1117,7 +1117,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[5, 9]",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -1322,7 +1322,7 @@
     "id": 62,
     "objet": [
       { "id": "or", "valeur": 28, "optionnel": false },
-      { "id": "repas", "valeur": 3, "optionnel": true },
+      { "id": "repas", "valeur": 3, "optionnel": false },
       { "id": "epee", "valeur": 1, "optionnel": true }
     ]
   },
@@ -1566,11 +1566,7 @@
       { "page": "132", "cond": null },
       {
         "page": "12",
-        "cond": [{
-          "type": "bourse",
-          "valeur": "1",
-          "targetId": "or"
-        }]
+        "cond": []
       },
       { "page": "220", "cond": null }
     ],
@@ -1724,7 +1720,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[0, 1]",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -1732,7 +1728,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[2, 4]",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -1740,7 +1736,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[5, 9]",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -2141,7 +2137,7 @@
         "cond": [{
           "type": "fuite",
           "valeur": "0",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -2401,14 +2397,14 @@
   {
     "text": "Vous parvenez bientôt à une petite clairière. En son centre, vous trouvez un banc taillé dans le tronc d'un arbre. Vous avez faim, et il vous faut prendre un Repas, sinon, vous perdrez 3 points d'ENDURANCE. Lorsque vous avez fini de manger, vous pourrez quitter la clairière par le sud en vous rendant au 28. Mais si vous préférez emprunter le sentier plus étroit qui mène vers l'est en s'enfonçant dans la forêt, rendez-vous au 201.",
     "combat": false,
-    "objet": [
+    "objet": [],
+    "effet": [
       {
-        "id": "repas",
+        "type": "repas",
         "valeur": -1,
-        "optionnel": false
+        "cond": null
       }
     ],
-    "effet": null,
     "ennemi": null,
     "lien": [
       { "page": "28", "cond": null },
@@ -2681,14 +2677,14 @@
   {
     "text": "Après avoir marché pendant quelques minutes, vous passez devant une petite hutte couverte de mousse qui a été bâtie à l'écart du chemin. Vous avez faim et il vous faut prendre un Repas, sinon, vous perdez 3 points d'ENDURANCE. Vous constatez bientôt que le chemin tourne vers l'est. Si vous voulez continuer à le suivre, rendez-vous au 42. Si vous préférez revenir sur vos pas, rendez-vous au 28.",
     "combat": false,
-    "objet": [
+    "objet": [],
+    "effet": [
       {
-        "id": "repas",
+        "type": "repas",
         "valeur": -1,
-        "optionnel": false
+        "cond": null
       }
     ],
-    "effet": null,
     "ennemi": null,
     "lien": [
       {
@@ -2848,7 +2844,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[6, 9]",
-          "id": null
+          "targetId": null
         }]
 
       }
@@ -2885,7 +2881,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[0, 4]",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -2893,7 +2889,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[5, 9]",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -2921,7 +2917,7 @@
     "text": "Vous vous approchez de ces hommes et vous les appelez. Mais lorsqu'ils se tournent vers vous, votre sang se glace et vous sentez votre cœur battre à tout rompre, car ce sont des Drakkarims déguisés. En vous voyant, ils se précipitent sur vous, vous ligotent pieds et poignets et vous traînent derrière eux le long d'un sentier. Ils vous prennent votre Sac à Dos et vos Armes, mais ils ne fouillent pas les poches de votre cape et ne trouvent pas vos Pièces d'Or. Vous les entendez jacasser d'un air menaçant tandis qu'ils vous emportent ainsi vers leur repaire : de toute évidence, ils sont en train de décider du sort qu'ils vous réservent, et vos perspectives d'avenir ne semblent pas des plus réjouissantes. Si vous possédez la Discipline Kaï de la Maîtrise Psychique de la Matière, rendez-vous au 258. Sinon, rendez-vous au 127.",
     "combat": false,
     "ennemi": null,
-    "effet": [],
+    "effet": null,
     "lien": [
       {
         "page": "258",
@@ -3019,18 +3015,18 @@
     "text": "Vous vous hissez au sommet de la luxueuse roulotte et vous vous installez au milieu des malles et des valises. La nuit bientôt tombera sur la grand-route. Un vent frais souffle de l'ouest, qui vous oblige à bien serrer votre cape autour de vous pour n'avoir pas trop froid. Au-dessous, à l'intérieur de la roulotte, vous entendez des gens parler et une délicieuse odeur de viande rôtie vous monte aux narines. Elle vient vous rappeler que vous avez très faim et qu'il vous faut prendre un Repas, sinon, vous perdrez 3 points d'ENDURANCE. La fatigue a tôt fait d'avoir raison de vous et vous finissez par sombrer dans un sommeil agité. Rendez-vous au 64.",
     "combat": false,
     "ennemi": null,
-    "effet": null,
+    "effet": [
+      {
+        "type": "repas",
+        "valeur": -1,
+        "cond": null
+      }
+    ],
     "lien": [
       { "page": "64", "cond": null }
     ],
     "id": 168,
-    "objet": [
-      {
-        "id": "repas",
-        "valeur": -1,
-        "optionnel": false
-      }
-    ]
+    "objet": []
   },
   {
     "text": "Lorsque vous passez devant les crânes, chacun d'eux pivote lentement sur lui-même comme pour suivre le moindre de vos mouvements. Vous vous trouvez à présent au milieu de cette chambre mortuaire et, soudain, vous entendez un bruit d'os qui se brise. Des formes monstrueuses éclosent alors des crânes en déployant des ailes semblables à celles des chauves-souris. Dix de ces créatures à la peau gluante vous attaquent aussitôt, et il vous faut les combattre en les considérant comme un seul et même adversaire. MONSTRES DES CRYPTES HABILETÉ: 16 ENDURANCE: 16 Après avoir livré le premier assaut (obligatoire), vous aurez le droit de prendre la fuite en courant dans le couloir. Rendez-vous pour cela au 23. Si vous décidez de combattre et que vous êtes vainqueur, rendez-vous au 137.",
@@ -3047,7 +3043,7 @@
         "cond": [{
           "type": "fuite",
           "valeur": "1",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -3073,7 +3069,7 @@
         "cond": [{
           "type": "objet",
           "targetId": "torche",
-          "valeur": "1"
+          "valeur": null
         }]
       }
     ],
@@ -3245,7 +3241,7 @@
         "cond": [{
           "type": "fuite",
           "valeur": "1",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -3296,7 +3292,13 @@
     "text": "La roulotte a échappé à tout contrôle et cahote dangereusement sur le bas-côté de la route, parmi les pierres et les nids-de-poule. Vous parvenez cependant, au prix de bien des efforts, à ramener sur la chaussée les chevaux saisis de panique et à arrêter l'attelage. En fouillant rapidement le véhicule, vous découvrez 40 Pièces d'Or, une Epée et une quantité de nourriture équivalant à 4 Repas. Si vous souhaitez conserver l'une ou l'autre de ces trouvailles (ou toutes ensemble), inscrivez-les sur votre Feuille d'Aventure. Les épreuves que vous avez subies vous ont épuisé, et il vous faut prendre un Repas. Vous plongerez ensuite dans un sommeil profond. Rendez-vous au 64.",
     "combat": false,
     "ennemi": null,
-    "effet": null,
+    "effet": [
+      {
+        "type": "repas",
+        "valeur": -1,
+        "cond": null
+      }
+    ],
     "lien": [
       { "page": "64", "cond": null }
     ],
@@ -3304,8 +3306,7 @@
     "objet": [
       { "id": "or", "valeur": 40, "optionnel": true },
       { "id": "epee", "valeur": 1, "optionnel": true },
-      { "id": "repas", "valeur": 4, "optionnel": true },
-      { "id": "repas", "valeur": -1, "optionnel": false }
+      { "id": "repas", "valeur": 4, "optionnel": false }
     ]
   },
   {
@@ -3353,7 +3354,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[0, 6]",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -3362,7 +3363,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[7, 9]",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -3409,7 +3410,7 @@
         "cond": [{
           "type": "fuite",
           "valeur": "1",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -3573,7 +3574,7 @@
         "cond": [{
           "type": "endurance",
           "valeur": "10",
-          "id": null
+          "targetId": null
           }]
       },
       {
@@ -3606,8 +3607,8 @@
     "text": "Leur chef ramasse votre Équipement et vous fait signe d'avancer le long du chemin. Les deux autres ont alors un sourire mauvais et vous vous rendez soudain compte qu'il ne s'agit pas du tout de soldats : ce sont des brigands déguisés. Vous prenez aussitôt la fuite en courant à toutes jambes vers la capitale. Mais au même instant, un frisson vous parcourt l'échiné : vous venez en effet d'entendre derrière vous le déclic d'une arbalète que l'on arme. Utilisez la Table de Hasard pour obtenir un chiffre : si vous tirez un chiffre entre 0 et 4, rendez-vous au 181. Entre 5 et 9, rendez- vous au 145.",
     "combat": false,
     "lien": [
-      { "page": "181", "cond": [{ "type": "hasard", "valeur": "[0, 4]", "id": null }] },
-      { "page": "145", "cond": [{ "type": "hasard", "valeur": "[5, 9]", "id": null }] }
+      { "page": "181", "cond": [{ "type": "hasard", "valeur": "[0, 4]", "targetId": null }] },
+      { "page": "145", "cond": [{ "type": "hasard", "valeur": "[5, 9]", "targetId": null }] }
     ],
     "id": 205,
     "objet": [],
@@ -3814,7 +3815,7 @@
     "effet": null,
     "lien": [
       { "page": "24", "cond": null },
-      { "page": "234", "cond": [{ "type": "fuite", "valeur": "0", "id": null }] }
+      { "page": "234", "cond": [{ "type": "fuite", "valeur": "0", "targetId": null }] }
     ],
     "id": 220,
     "objet": []
@@ -3890,7 +3891,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[0, 4]",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -3898,7 +3899,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[5, 9]",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -3922,7 +3923,7 @@
         "cond": [{
           "type": "endurance_perdue",
           "valeur": "1",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -3930,7 +3931,7 @@
         "cond": [{
           "type": "endurance_perdue",
           "valeur": "0",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -3996,7 +3997,7 @@
         "cond": [{
           "type": "assaut_max",
           "valeur": "4",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -4004,7 +4005,7 @@
         "cond": [{
           "type": "assaut_echec",
           "valeur": "4",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -4012,7 +4013,7 @@
         "cond": [{
           "type": "fuite",
           "valeur": "2",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -4075,14 +4076,14 @@
       }
     ],
     "id": 235,
-    "objet": [
+    "objet": [],
+    "effet": [
       {
-        "id": "repas",
+        "type": "repas",
         "valeur": -1,
-        "optionnel": false
+        "cond": null
       }
     ],
-    "effet": null,
     "ennemi": null
   },
   {
@@ -4104,7 +4105,8 @@
       {
         "type": "habilite",
         "valeur": -1,
-        "cond": null
+        "cond": null,
+        "permanent": true
       }
     ],
     "ennemi": null,
@@ -4128,7 +4130,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[0, 4]",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -4136,7 +4138,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[5, 9]",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -4755,7 +4757,7 @@
         "cond": [{
           "type": "arme",
           "valeur": "1",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -4780,7 +4782,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[0, 4]",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -4788,7 +4790,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[5, 9]",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -4825,7 +4827,7 @@
         "cond": [{
           "type": "arme",
           "valeur": "1",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -4864,7 +4866,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[0, 6]",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -4872,7 +4874,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[7, 9]",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -4939,12 +4941,12 @@
         "cond": [{
           "type": "assaut_max",
           "valeur": "1",
-          "id": null
+          "targetId": null
         }]
       },
       {
         "type": "habilite",
-        "valeur": -4,
+        "valeur": -2,
         "cond": [{
           "type": "discipline",
           "targetId": "bouclier_psychique",
@@ -5149,7 +5151,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[0, 2]",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -5157,7 +5159,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[3, 6]",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -5165,7 +5167,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[7, 9]",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -5256,14 +5258,14 @@
   {
     "text": "Vous avez marché pendant plus d'une heure en surveillant le ciel de peur de voir apparaître des Kraans. Par deux fois, vous avez aperçu leurs silhouettes caractéristiques qui se dessinaient au loin, mais la promptitude de vos réflexes vous a gardé d'être repéré. Cette longue marche vous a affamé cependant et il vous faut prendre un Repas, sinon vous perdrez 3 points d'ENDURANCE. Vous poursuivrez ensuite votre chemin en vous rendant au 13.",
     "combat": false,
-    "objet": [
+    "objet": [],
+    "effet": [
       {
-        "id": "repas",
+        "type": "repas",
         "valeur": -1,
-        "optionnel": false
+        "cond": null
       }
     ],
-    "effet": null,
     "ennemi": null,
     "lien": [
       {
@@ -5299,7 +5301,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[0, 2]",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -5307,7 +5309,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[3, 9]",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -5417,7 +5419,7 @@
         "cond": [{
           "type": "arme",
           "valeur": "1",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -5558,7 +5560,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[0, 6]",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -5566,7 +5568,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[7, 9]",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -5769,13 +5771,7 @@
   {
     "text": "Vous introduisez avec précaution la Clé d'Or dans la serrure et vous la tournez dans le sens des aiguilles d'une montre. Vous entendez alors un faible déclic : le mécanisme a fonctionné. Vous retirez ensuite la broche et la lourde porte de granité pivote bientôt sur ses gonds, s'ouvrant vers vous. La lumière grise du cimetière se diffuse dans le caveau et vous parvenez à sortir. L'ouverture est, cependant, envahie de ronces et vous vous écorchez le visage et les mains en vous hissant au-dehors. Lorsque, enfin, vous vous retrouvez à l'air libre, la porte du caveau se referme lentement derrière vous et un rire cruel, inhumain, semble aussitôt s'élever des profondeurs de la terre, juste sous vos pieds. Saisi de terreur, vous prenez vos jambes à votre cou et vous vous précipitez vers la porte sud de la ville, en traversant aussi vite que possible cette sinistre nécropole. Rendez-vous au 61.",
     "combat": false,
-    "objet": [
-      {
-        "id": "cle_or",
-        "valeur": -1,
-        "optionnel": false
-      }
-    ],
+    "objet": [],
     "effet": null,
     "ennemi": null,
     "lien": [
@@ -5979,7 +5975,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[0, 4]",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -5987,7 +5983,7 @@
         "cond": [{
           "type": "hasard",
           "valeur": "[5, 9]",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -6023,7 +6019,7 @@
         "cond": [{
           "type": "assaut_max",
           "valeur": "4",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -6031,7 +6027,7 @@
         "cond": [{
           "type": "assaut_echec",
           "valeur": "4",
-          "id": null
+          "targetId": null
         }]
       },
       {
@@ -6039,7 +6035,7 @@
         "cond": [{
           "type": "fuite",
           "valeur": "0",
-          "id": null
+          "targetId": null
         }]
       }
     ],
@@ -6100,7 +6096,7 @@
         "cond": [{
           "type": "discipline",
           "targetId": "bouclier_psychique",
-          "valeur": "-1"
+          "valeur": null
         }]
       }
     ],

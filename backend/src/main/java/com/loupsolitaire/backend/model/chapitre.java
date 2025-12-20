@@ -5,6 +5,8 @@ import lombok.Data;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "chapitre")
 @Data
@@ -18,7 +20,8 @@ public class Chapitre {
 
     private Boolean combat;
 
-    @OneToMany(mappedBy = "chapitre", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "chapitre", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<ObjetChap> objet;
 
     @ManyToMany(cascade = CascadeType.ALL)

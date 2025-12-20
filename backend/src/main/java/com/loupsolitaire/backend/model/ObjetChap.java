@@ -1,5 +1,6 @@
 package com.loupsolitaire.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -16,12 +17,13 @@ public class ObjetChap {
     private Integer valeur;
     private boolean optionnel;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "objet_id")
     private Objet objet;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "chapitre_id")
+    @JsonBackReference
     private Chapitre chapitre;
 
     // ✅ Permet de lire "id": "epee" dans le JSON et l'appliquer à ce champ `objet`

@@ -1,6 +1,7 @@
 package com.loupsolitaire.backend.controller;
 
 import com.loupsolitaire.backend.model.Discipline;
+import com.loupsolitaire.backend.model.IdDiscipline;
 import com.loupsolitaire.backend.repository.DisciplineRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -9,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/disciplines")
+@RequestMapping("/disciplines")
 @RequiredArgsConstructor
 public class DisciplineController {
 
@@ -24,7 +25,7 @@ public class DisciplineController {
   // Récupérer une discipline par son id
   @GetMapping("/{id}")
   public Optional<Discipline> getById(@PathVariable String id) {
-    return disciplineRepository.findById(id);
+    return disciplineRepository.findById(IdDiscipline.valueOf(id));
   }
 
 }

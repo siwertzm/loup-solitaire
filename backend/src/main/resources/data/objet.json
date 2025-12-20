@@ -7,6 +7,13 @@
     "effet": null
   },
   {
+    "id": "glaive",
+    "nom": "Glaive",
+    "description": "Un glaive pour se defendre",
+    "categorie": "arme",
+    "effet": null
+  },
+  {
     "id": "lance",
     "nom": "Lance",
     "description": "Une lance pour se defendre",
@@ -76,14 +83,8 @@
     "effet": [
       {
       "type": "endurance",
-      "valeur": 2,
-      "cond": [
-        {
-          "type": "bourse",
-          "valeur": 2,
-          "targetId": "or"
-        }
-      ]
+      "valeur": 4,
+      "cond": null
       }
     ]
   },
@@ -207,6 +208,13 @@
     "id": "etoile_cristal",
     "nom": "Étoile de Cristal",
     "description": "Une Chaîne d'Or et Une petite étoile de cristal est attachée au bout.",
+    "categorie": "objets spéciaux",
+    "effet": null
+  },
+  {
+    "id": "carte",
+    "nom": "Carte géographique",
+    "description": "Une carte géographique qui vous permet de vous orienter.",
     "categorie": "objets spéciaux",
     "effet": null
   }

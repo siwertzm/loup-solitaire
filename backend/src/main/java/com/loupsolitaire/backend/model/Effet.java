@@ -18,7 +18,8 @@ public class Effet {
 
   @Enumerated(EnumType.STRING)
   private TypeEffet type; // type de l'effet
-  private Integer valeur; // valeur de l'effet
+  private Integer valeur;
+  private boolean permanent; // indique si l'effet est permanent
 
   @ManyToMany(mappedBy = "effet")
   @JsonIgnore
