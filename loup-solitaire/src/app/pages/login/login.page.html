@@ -1,8 +1,10 @@
 <ion-content class="auth-page">
-
+  <img src="/assets/illustrations/loup.png" alt="" class="imageLoup">
+  <h2 class="smallTitle">Loup Solitaire</h2>
+  <h1 class="title">Les Maîtres des ténèbres</h1>
   <div class="auth-card">
 
-    <h1>Connexion</h1>
+    <h1>Se connecter</h1>
 
     <form (ngSubmit)="login()">
 
@@ -22,15 +24,14 @@
         required>
       </ion-input>
 
-      <ion-button expand="block" type="submit">
+      <ion-button expand="block" type="submit" class="loginBtn">
         Se connecter
       </ion-button>
 
     </form>
-
     <div class="link">
       Pas encore de compte ?
-      <a routerLink="/register">Créer un compte</a>
+      <button type="button" class="link-btn" (click)="goToRegister()">Créer un compte</button>
     </div>
 
   </div>

@@ -27,4 +27,8 @@ export class LoginPage {
       error: () => alert("Username ou mot de passe incorrect")
     });
   }
+  
+  goToRegister() {
+    this.router.navigate(['/register']);
+  }
 }

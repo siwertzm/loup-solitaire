@@ -32,4 +32,8 @@ export class RegisterPage {
       }
     });
   }
+
+  goToLogin() {
+    this.router.navigate(['/login']);
+  }
 }

@@ -1,0 +1,114 @@
+.auth-page {
+  --background: url('/assets/illustrations/background.png') no-repeat center/cover;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  position: absolute;
+  top: 60px;
+  width: 100%;
+  text-align: center;
+  font-size: 40px;
+  color: #000000;
+  text-shadow: 2px 2px 8px #000000AA;
+}
+
+.smallTitle {
+  position: absolute;
+  top: 35px;
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #E5E4C9;
+  text-shadow: 2px 2px 8px #000000AA;
+}
+
+.imageLoup {
+  pointer-events: none;
+  position: absolute;
+  width: 500px;
+  bottom: 0px;
+  right: -60px;
+  filter: drop-shadow(0px 5px 15px #00000080);
+}
+
+/* Carte centrale */
+.auth-card {
+  width: 85%;
+  background: #E5E4C9;
+  padding: 25px;
+  border-radius: 22px;
+  border: 3px solid #232323;
+  box-shadow: 0px 5px 12px #00000080;
+  text-align: center;
+  margin-top: 200px;
+  margin-left: auto;
+  margin-right: auto;   
+}
+
+/* Titre */
+.auth-card h1 {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 26px;
+  margin-bottom: 20px;
+  color: #232323;
+}
+
+/* Inputs */
+ion-input {
+  margin-bottom: 18px;
+  border-radius: 11px;
+  border: 2px solid #232323;
+  box-shadow: 0px 3px 6px #00000055;
+  font-size: 16px;
+  color: #232323;
+}
+
+/* Bouton principal */
+.loginBtn {
+  --background: #EB5D2C;
+  --color: #232323;
+  font-weight: bold;
+  border-radius: 11px;
+  --border-radius: 10px;
+  border: 2px solid #232323;
+  box-shadow: 0px 2px 8px #00000055;
+  margin-top: 10px;
+}
+
+ion-button:active {
+  transform: scale(0.96);
+}
+
+/* Lien bas */
+.link {
+  margin-top: 18px;
+  font-size: 15px;
+  color: #333;
+}
+
+.link a {
+  margin-left: 4px;
+  font-weight: bold;
+  color: #EB5D2C;
+  text-decoration: none;
+}
+
+.link-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  margin-left: 4px;
+  font-weight: bold;
+  color: #EB5D2C;
+  text-decoration: none;
+  font-size: 15px;
+}
+.link-btn:active {
+  transform: scale(0.96);
+}
+

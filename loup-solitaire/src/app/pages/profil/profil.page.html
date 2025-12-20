@@ -1,13 +1,57 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>profil</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="profil-page">
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">profil</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <!-- Carte principale -->
+  <div class="profil-card">
+
+    <!-- Ligne haut : avatar + infos + bouton modifier -->
+    <div class="header">
+      <img src="/assets/illustrations/perso.png" class="avatar"/>
+
+      <div class="infos">
+        <div class="username">Username : Marius</div>
+        <div class="password">Mot de passe : *******</div>
+      </div>
+
+      <div class="liens">
+        <button class="lien-btn">Modifier</button>
+      </div>
+      
+    </div>
+
+    <!-- Boutons actions -->
+    <div class="liens" id="takeAllBtn">
+      <button class="lien-btn" (click)="supprimerCompte()">
+        Supprimer
+      </button>
+    </div>
+    <div class="liens" id="takeAllBtn">
+      <button class="lien-btn" (click)="nouvelleAventure()">
+        Nouvelle aventure
+      </button>
+    </div>
+
+    <!-- Liste des personnages -->
+    <div class="players-list">
+
+      <div class="player" *ngFor="let perso of joueurs">
+        <div class="left">
+          <img src="/assets/illustrations/perso.png" class="player-avatar"/>
+          <div>
+            <div class="name">Kai</div>
+            <div class="stats">
+              Habilité : 17<br>
+              Endurance : 25/30
+            </div>
+          </div>
+        </div>
+
+        <div class="right">
+          <div class="chapter">Chapitre</div>
+          <div class="chapter-number">3</div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
 </ion-content>
